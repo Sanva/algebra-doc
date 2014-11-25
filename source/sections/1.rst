@@ -1,0 +1,1498 @@
+
+.. default-role:: math
+
+Tema 1
+======
+
+Cuerpo
+------
+
+Propiedades de las operaciones `+` y `\cdot` en `\mathbb{R}`:
+
+- `+`
+	
+	- Propiedad asociativa: `(a + b) + c = a + (b + c) \quad \forall a, b, c \in \mathbb{R}`
+	
+	- Elemento neutro: `0 + a = a = a + 0 \quad \forall a \in \mathbb{R}`
+	
+	- Elemento simétrico —o inverso— de otro: `(-a) + a = 0 = a + (-a) \quad \forall a \in \mathbb{R}`
+	
+	- Propiedad conmutativa: `a + b = b + a \quad \forall a, b \in \mathbb{R}`
+  
+- `\cdot`
+	
+	- Propiedad asociativa: `(a \cdot b) \cdot c = a \cdot (b \cdot c) \quad \forall a, b, c \in \mathbb{R}`
+	
+	- Elemento neutro: `1 \cdot a = a = a \cdot 1 \quad \forall a \in \mathbb{R}`
+	
+	- Elemento simétrico —o inverso— de otro: `1/a \cdot a = 1 = a \cdot 1/a \quad \forall a \in \mathbb{R} / a \neq 0`
+	
+	- Propiedad conmutativa: `a \cdot b = b \cdot a \quad \forall a, b \in \mathbb{R}`
+  
+- Propiedad distributiva de `\cdot` respecto de `+`:
+  `a \cdot (b + c) = a \cdot b + a \cdot c \quad \forall a, b, c \in \mathbb{R}`
+
+.. admonition :: Definición
+	
+	Un cuerpo `\mathbb{K}` es un conjunto `\mathbb{K}` con dos operaciones
+	internas que denotamos por `+` y `\cdot` tales que verifican las propiedades
+	anteriores.
+
+Ejemplos de cuerpos: `\mathbb{R}`, `\mathbb{C}`, `\mathbb{Q}`...
+
+Es posible definir un cuerpo con dos elementos, `\left \{0, 1\right \}`,
+
+.. table::
+	
+	===   =   =
+	`+`   0   1
+	===   =   =
+	0     0   1
+	1     1   0
+	===   =   =
+
+.. table::
+	
+	=======  =   =
+	`\cdot`  0   1
+	=======  =   =
+	0        0   0
+	1        0   1
+	=======  =   =
+
+Este cuerpo se llama `\mathbb{Z}_2`.
+
+Matriz
+------
+
+.. admonition:: Definición
+	
+	Una matriz `A` de orden `m \times n` con entradas en un
+	cuerpo `\mathbb{K}` es una tabla de doble entrada con `m \cdot n`
+	elementos en `\mathbb{K}` distribuidos en `m` filas y
+	`n` columnas.
+	
+	Al elemento de la matriz `A` que está en la fila `i` y en la
+	columna `j` lo denotaremos por `A(i, j)` o por `a_{ij}`.
+	
+	.. math::
+		
+		A = \begin{pmatrix}
+			a_{11} & a_{12} & \cdots & a_{1n} \\
+			a_{21} & a_{22} & \cdots & a_{2n} \\
+			\vdots & \vdots & \ddots & \vdots \\
+			a_{m1} & a_{m2} & \cdots & a_{mn}
+			\end{pmatrix}
+
+.. admonition:: Ejemplo
+
+	.. math::
+		
+		B = \begin{pmatrix}
+			 1 & 2 & 3 \\
+			-1 & 7 & 5
+			\end{pmatrix} \in \mathcal{M}_{2 \times 3}(\mathbb{R}), b_{2 3} = 5 = B(2, 3)
+
+
+Conjuntos de matrices
+$$$$$$$$$$$$$$$$$$$$$
+
+El conjunto de matrices de orden `m \times n` con entradas en un cuerpo
+`\mathbb{K}` lo denotaremos por `\mathcal{M}_{m \times n}(\mathbb{K})`.
+
+Igualdad de matrices
+$$$$$$$$$$$$$$$$$$$$
+
+Dos matrices `A` y `B` de orden `m \times n` con entradas en el mismo cuerpo
+`\mathbb{K}` son iguales si
+
+.. math::
+	
+	\begin{matrix}
+		A(i, j) = B(i, j) & \forall i = 1, \cdots, m \\
+	                      & \forall j = 1, \cdots, n
+	 \end{matrix}
+
+Casos particulares
+$$$$$$$$$$$$$$$$$$
+
+Matriz fila
+%%%%%%%%%%%
+
+.. math::
+	
+	\begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1n} \end{pmatrix} \in \mathcal M_{1 \times n}(\mathbb K)
+
+Matriz columna
+%%%%%%%%%%%%%%
+
+.. math::
+	
+	\begin{pmatrix} a_{11} \\ a_{21} \\ \vdots \\ a_{m1} \end{pmatrix} \in \mathcal M_{m \times 1}(\mathbb K)
+
+Matrices cuadradas de orden `n`
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Si `m = n`
+
+.. math::
+	
+	\mathcal M_{m \times n}(\mathbb K) = \mathcal M_n(\mathbb K)
+
+Matriz diagonal de orden `n`
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+.. math ::
+	
+	A \in \mathcal M_n(\mathbb K) \text{ es diagonal si } a_{ij} = 0 \Leftrightarrow i \neq j
+
+.. admonition:: Ejemplo
+	
+	.. math::
+		
+		\begin{pmatrix}
+		1 & 0 & 0 \\
+		0 & 0 & 0 \\
+		0 & 0 & 3
+		\end{pmatrix}
+
+
+Matriz identidad de orden `n`
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+.. math::
+	
+	I_n \in \mathcal M_n(\mathbb K) \text{ diagonal} \quad / \quad I_n(i, i) = 1 \quad \forall i = 1, \cdots, n
+
+.. admonition:: Delta de Kronecker
+	
+	La matriz identidad también se puede expresar con la función
+	*delta de Kronecker*, `\delta_{ij}`, definida como
+	
+	.. math::
+		
+		\delta_{ij} = \left\{
+			\begin{matrix}
+			1 & \mbox{si } i = j  \\
+			0 & \mbox{si } i \neq j
+			\end{matrix}
+		\right.
+
+Operaciones con matrices
+$$$$$$$$$$$$$$$$$$$$$$$$
+
+Suma
+%%%%
+
+Sean `A, B \in \mathcal M_{m \times n}(\mathbb K)`
+
+Se define la suma de `A` y `B` como una matriz de orden `m \times n`
+con entradas en `\mathbb K` que denotamos `A + B` tal que
+
+.. math::
+	
+	\begin{matrix}
+		(A + B)(i, j) := a_{ij} + b_{ij} \in \mathbb K & \forall i = 1, \cdots, m \\
+													   & \forall j = 1, \cdots, n
+	\end{matrix}
+
+Multiplicación por escalares
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Sean `A \in \mathcal M_{m \times n}(\mathbb K)` y `\alpha \in \mathbb K`.
+Se define `\alpha A` como una matriz de orden `m \times n` con entradas en
+`\mathbb K` tal que
+
+.. math::
+	
+	\begin{matrix}
+		\alpha A(i, j) := \alpha \cdot a_{ij} \in \mathbb K & \forall i = 1, \cdots, m \\
+														   & \forall j = 1, \cdots, n
+	\end{matrix}
+
+Propiedades
+%%%%%%%%%%%
+
+Con `A, B, C \in \mathcal M_{m \times n}(\mathbb K)` y `\alpha, \beta \in \mathbb K`.
+
+#) Propiedad asociativa de `+`
+   
+   .. math::
+	
+	A + (B + C) = (A + B) + C
+   
+   .. admonition:: Demostración
+	
+	.. math::
+		
+		
+		\big(A + (B + C)\big)(i, j) = a_{ij} + (b_{ij} + c_{ij}) =^{\color{blue} 1}
+			(a_{ij} + b_{ij}) + c_{ij} \big((A + B) + C\big)(i, j) \\
+		\color{blue} 1 \mapsto \text{ Por la propiedad asociativa de la suma en } \mathbb K
+		
+   
+#) Elemento neutro para la suma
+   
+   .. math::
+	
+	0(i, j) := 0^{\color{blue} 1} \\
+	\color{blue} 1 \mapsto \text{ Neutro de la suma en } \mathbb K
+
+#) Simétrico
+   
+   .. math::
+	
+	\exists A \in \mathcal M_{m \times n}(\mathbb K) \Rightarrow \exists -A \in \mathcal M_{m \times n}(\mathbb K) \\
+	-A(i, j) := -a_{ij} \\
+	-A \text{ es la simétrica de } A
+	
+
+#) Propiedad conmutativa
+   
+   - `+`
+     
+     .. math::
+		
+		A + B = B + A
+
+   - Multiplicación por escalares
+     
+     .. math::
+		
+		\alpha A = A \alpha
+
+#) Distributiva de la multiplicación por escalares respecto de la suma de matrices
+   
+   .. math::
+	
+	\alpha (A + B) = \alpha A + \alpha B
+
+#) Distributiva
+   
+   .. math::
+	
+	(\alpha + \beta) A = \alpha A + \beta A
+
+#) Elemento neutro para la multiplicación
+   
+   .. math::
+	
+	1A = A
+
+Matriz traspuesta
+%%%%%%%%%%%%%%%%%
+
+.. admonition:: Definición
+	
+	Sea `A \in \mathcal M_{m \times n}(\mathbb K)`.
+	
+	Se define la traspuesta de `A` como una matriz de orden `n \times m`
+	que se denota por `A^t` tal que
+	
+	.. math::
+		
+		\begin{matrix}
+			A^t(i, j) := A(j, i) & \forall i = 1, \cdots, n \\
+								 & \forall j = 1, \cdots, m
+		\end{matrix}
+
+.. admonition:: Ejemplo
+	
+	.. math::
+		
+		A = \begin{pmatrix}
+				1 & 2 & 3 \\
+				4 & 5 & 6
+			\end{pmatrix}
+		
+		A^t = \begin{pmatrix}
+				1 & 4 \\
+				2 & 5 \\
+				3 & 6
+			  \end{pmatrix}
+
+Propiedades
+&&&&&&&&&&&
+
+.. math::
+	
+	A \in \mathcal M_{m \times n} (\mathbb K)
+	B \in \mathcal M_{n \times s} (\mathbb K)
+	
+	A^t \in \mathcal M_{n \times m} (\mathbb K)
+	B^t \in \mathcal M_{s \times n} (\mathbb K)
+
+Se verifica
+
+#) `(A^t)^t = A`
+
+#) `(AB)^t = B^t A^t`
+   
+   .. admonition:: Demostración
+	
+	.. math::
+		
+		\begin{matrix}
+			(AB)^t (i, j) := (AB)(j, i) =
+			\displaystyle\sum_{k = 1}^n a_{jk}b_{ki} =^{\color{blue} 1}
+			\sum_{k = 1}^n B^t (i, k) A^t (k, j) = (B^t A^t)(i, j)	& \forall i \\
+																	& \forall j
+		\end{matrix}
+		
+		\color{blue} 1 \mapsto \text{ Por la propiedad conmutativa del producto en } \mathbb K
+
+.. admonition:: Definición
+	
+	Con
+	
+	.. math::
+		
+		A \in \mathcal M_n (\mathbb K) \text{ no singular}
+	
+	Se verifica
+	
+	.. math::
+		
+		(A^{-1})^t = (A^t)^{-1}
+
+Producto de matrices
+%%%%%%%%%%%%%%%%%%%%
+
+Siendo `A \in \mathcal M_{m \times n}(\mathbb K)` y
+`B \in \mathcal M_{n \times s}(\mathbb K)` se define
+
+.. math::
+	
+	\begin{matrix}
+		AB \in \mathcal M_{m \times s}(\mathbb K) \text{ tal que } \\
+		AB(i, j) := \displaystyle\sum_{k = 1}^n a_{ik}b_{kj} & \forall i = 1, \cdots, m \\
+															 & \forall j = 1, \cdots, s
+	\end{matrix}
+
+Propiedades
+&&&&&&&&&&&
+
+Sea `A \in \mathcal M_{m \times n}(\mathbb K)`
+
+#) Asociativa
+   
+   .. math::
+	
+	AB \Rightarrow B \in \mathcal M_{n \times s}(\mathbb K) \\
+	(AB)C \Rightarrow C \in \mathcal M_{s \times r}(\mathbb K) \\
+	\Big( (AB)C = A(BC) \Big) \in \mathcal M_{m \times r}(\mathbb K)
+
+#) Elemento neutro
+   
+   .. math::
+	
+	I_m A = A \\
+	AI_n = A
+	
+   Y, en particular,
+   
+   .. math::
+	
+	\text{Si } A \in \mathcal M_n(\mathbb K) \quad \exists I_n \in \mathcal M_n(\mathbb K) \\
+	\text{tal que} \\
+	AI_n = I_n A = A
+
+#) Distributiva —por la izquierda y por la derecha
+   
+   Con `B' \in \mathcal M_{n \times s}(\mathbb K)`
+   
+   .. math::
+	
+	A(B + B') = AB + AB' \\
+	(B + B')C = BC + B'C
+   
+   Con `\alpha \in \mathbb K`
+   
+   .. math::
+	
+	\alpha (AB) = (\alpha A)B = A(\alpha B)
+
+.. note::
+	
+	El producto de matrices no verifica la propiedad conmutativa.
+
+.. admonition:: Observación
+	
+	.. math::
+		
+		\begin{pmatrix} a_{11} & \cdots & a_{1n} \end{pmatrix}
+		\begin{pmatrix}
+			b_{11} & \cdots & b_{1s} \\
+			b_{21} & \cdots & b_{2s} \\
+			\vdots & \ddots & \vdots \\
+			b_{n1} & \cdots & b_{ns}
+		\end{pmatrix} = a_{11} F_1(B) + a_{12} F_2(B) + \cdots + a_{1n} F_n(B)
+	
+	Es decir, las filas de `AB` son combinación lineal de las filas de `B`.
+	
+	.. admonition:: Ejemplo
+		
+		.. math::
+			
+			\begin{pmatrix} 2 & 3 \end{pmatrix}
+			\begin{pmatrix}
+				1 & 3 & 5 \\
+				2 & 4 & 6
+			\end{pmatrix} =
+			\begin{pmatrix}
+				2 \cdot 1 + 3 \cdot 2 & 2 \cdot 3 + 3 \cdot 4 & 2 \cdot 5 + 3 \cdot 6
+			\end{pmatrix} =
+			2 \begin{pmatrix} 1 & 3 & 5 \end{pmatrix} + 3 \begin{pmatrix} 2 & 4 & 6 \end{pmatrix}
+	
+	.. admonition:: Consecuencia
+		
+		Con `A \in \mathcal M_{m \times n}(\mathbb K)` y `B \in \mathcal M_{n \times s}(\mathbb K)`
+		
+		.. math::
+			
+			F_i(AB) = a_{i1} F_1(B) + a_{i2} F_2(B) + \cdots + a_{in} F_n(B) \quad \forall i = 1, \cdots, m
+
+.. admonition:: Observación
+	
+	.. math::
+		
+		\begin{pmatrix}
+			a_{11} & \cdots & a_{1n} \\
+			a_{21} & \cdots & a_{2n} \\
+			\vdots & \ddots & \vdots \\
+			a_{m1} & \cdots & a_{mn}
+		\end{pmatrix}
+		\begin{pmatrix}
+			b_{11} \\
+			b_{21} \\
+			\vdots \\
+			b_{n1}
+		\end{pmatrix} =
+		C_1(A) b_{11} + C_2(A) b_{21} + \cdots + C_n(A) b_{n1}
+	
+	Es decir, las columnas de `AB` son combinación lineal de las columnas de `A`.
+	
+	.. admonition:: Ejemplo
+		
+		.. math::
+			
+			\begin{pmatrix}
+				1 & 2 \\
+				0 & 1 \\
+				3 & -1
+			\end{pmatrix}
+			\begin{pmatrix}
+				5 \\
+				7
+			\end{pmatrix} =
+			\begin{pmatrix}
+				1 \cdot 5 + 2 \cdot 7 \\
+				0 \cdot 5 + 1 \cdot 7 \\
+				3 \cdot 5 + (-1) \cdot 7
+			\end{pmatrix} =
+			\begin{pmatrix}
+				1 \\
+				0 \\
+				3
+			\end{pmatrix} 5 +
+			\begin{pmatrix}
+				2 \\
+				1 \\
+				-1
+			\end{pmatrix} 7
+		
+
+Matriz no singular
+$$$$$$$$$$$$$$$$$$
+
+.. admonition:: Definición
+	
+	Una matriz `A = (a_{ij}) \in \mathcal M_n(\mathbb K)` es
+	no singular —o inversible— si existe una matriz
+	`B = (b_{ij}) \in \mathcal M_n(\mathbb K)` tal que
+	`AB = I_n = BA`.
+
+No todas las matrices cuadradas tienen inversa.
+
+Propiedades
+%%%%%%%%%%%
+
+Con `A = (a_{ij}) \in \mathcal M_n(\mathbb K)` no singular,
+
+#) Si existe inverso es único.
+   
+   .. admonition:: Demostración
+	
+	.. math::
+		
+		\left.
+		\begin{matrix}
+			A \text{ tiene inverso } \Leftrightarrow \exists B \in \mathcal M_n(\mathbb K) \quad / \quad AB = I_n = BA 	\\
+			\text{Si existiese } B' \in \mathcal M_n(\mathbb K)                            \quad / \quad AB' = I_n = B'A
+		\end{matrix}
+		\right\} \Rightarrow^{\color{red} ?} B = B'
+		\\
+		\\
+		B = BI_n = B(AB') =^{\color{blue} 1} (BA)B' = I_n B' = B' \\
+		\color{blue} 1 \mapsto \text{Propiedad asociativa}
+
+#) Con `A, B \in \mathcal M_n(\mathbb K)` no singulares,
+   
+   Se verifica que `AB` es no singular y `(AB)^{-1} = B^{-1} A^{-1}`.
+   
+   .. admonition:: Demostración
+	
+	.. math::
+		
+		\left.
+		\begin{matrix}
+			\exists A^{-1} \in \mathcal M_n(\mathbb K) \\
+			\exists B^{-1} \in \mathcal M_n(\mathbb K)
+		\end{matrix}
+		\right\} B^{-1} A^{-1} \in \mathcal M_n(\mathbb K)
+		\\
+		\\
+		(B^{-1} A^{-1})(AB) =^{\color{blue} 1} B^{-1} (A^{-1} A) B = B^{-1} I_n B = B^{-1} B = I_n \\
+		\color{blue} 1 \mapsto \text{Propiedad asociativa}
+
+Matrices elementales
+$$$$$$$$$$$$$$$$$$$$
+
+`E \in \mathcal M_n(\mathbb K)` es una matriz elemental si es de uno
+de los siguientes tipos:
+
+#) Si la matriz `E` se obtiene de `I_n` intercambiando dos filas: `E_{i \leftrightarrow j}`
+   
+   .. note::
+	
+	Estas matrices se llaman matrices de permutación.
+
+#) Si la matriz `E` se obtiene de `I_n` multiplicando una fila
+   por un escalar no nulo.
+   
+   Con `\alpha \in \mathbb K` y `\alpha \neq 0`
+   
+   .. math::
+	
+	E_{\alpha F_i} = \begin{pmatrix}
+						1 & & & & \\
+						& \ddots & & & \\
+						& & \alpha & & \\
+						& & & \ddots & \\
+						& & & & 1
+					 \end{pmatrix}
+
+#) Si la matriz `E` se obtiene de `I_n` sumándole a una fila un
+   múltiplo de otra fila: `E_{F_i + \alpha F_j}` con `i \neq j`
+
+Propiedades por filas
+%%%%%%%%%%%%%%%%%%%%%
+
+Con `A \in \mathcal M_{m \times n}(\mathbb K)` se verifica:
+
+#) `E_{F_i \leftrightarrow F_j} A` es la matriz que se obtiene de `A`
+   al intercambiar su fila `i`-ésima por su fila `j`-ésima.
+
+#) `E_{\alpha F_i} A` con `\alpha \neq 0` es la matriz que se obtiene de `A`
+   multiplicando su fila `i`-ésima por el escalar `\alpha`.
+
+#) `E_{F_i + \alpha F_j} A` con `i \neq j` es la matriz que se obtiene
+   de `A` sumando a su fila `i`-ésima `\alpha` veces su fila `j`-ésima.
+
+Propiedades por columnas
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+Con `A \in \mathcal M_{m \times n}(\mathbb K)` se verifica:
+
+#) `A E_{F_i \leftrightarrow F_j} = A E'_{C_i \leftrightarrow C_j}`
+   es la matriz que se obtiene de `A` al intercambiar su columna `i`-ésima
+   por su columna `j`-ésima.
+
+#) `A E_{\alpha F_i} = A E'_{\alpha C_i}` con `\alpha \neq 0` es la
+   matriz que se obtiene de `A` multiplicando su columna `i`-ésima por el
+   escalar `\alpha`.
+
+#) `A E_{F_i + \alpha F_j} = A E'_{C_j + \alpha C_i}` con `i \neq j` es la matriz que se obtiene
+   de `A` sumando a su columna `j`-ésima `\alpha` veces su columna `i`-ésima.
+
+.. admonition:: Corolario
+	
+	Las matrices elementales son no singulares y su inversa es de
+	nuevo una matriz elemental.
+	
+	.. admonition:: Demostración
+		
+		.. math::
+			
+			E_{F_i \leftrightarrow F_j} E_{F_i \leftrightarrow F_j} = I \Rightarrow
+			(E_{F_i \leftrightarrow F_j})^{-1} = E_{F_i \leftrightarrow F_j}
+			\\
+			\\
+			\begin{matrix}
+				\text{Con } \alpha \neq 0, & \underbrace{ E_{\alpha^{-1} F_i} E_{\alpha F_i} = I = E_{\alpha F_i} E_{\alpha^{-1}} } \\
+				                           & \Downarrow \\
+				                           & (E_{\alpha F_i})^{-1} = E_{\alpha^{-1} F_i}
+			\end{matrix}
+			\\
+			\\
+			\begin{matrix}
+				\underbrace{ E_{F_i - \alpha F_j} E_{F_i + \alpha F_j} = I = E_{F_i + \alpha F_j} E_{F_i - \alpha F_j} } \\
+				\Downarrow \\
+				(E_{F_i + \alpha F_j})^{-1} = E_{F_i - \alpha F_j}
+			\end{matrix}
+			
+
+Escalonamiento de matrices
+$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+.. admonition:: Definición
+	
+	Una matriz `A \in \mathcal M_{m \times n}(\mathbb K)` es escalonada por
+	filas si
+	
+	#) Si tiene filas de ceros están al final.
+	
+	#) .. admonition:: Definición
+		
+		El primer elemento no nulo de cada fila no nula se llamará pivote.
+		
+	   El pivote de cada fila está situado más a la derecha —i.e. en una
+	   columna posterior— que los pivotes de las filas anteriores.
+
+.. admonition:: Definición
+	
+	Una matriz `A \in \mathcal M_{m \times n}(\mathbb K)` escalonada es
+	escalonada reducida si todos los pivotes son `1` y además todos
+	los otros elementos **de la columna** en donde hay pivote son `0`.
+
+Matrices equivalentes
+$$$$$$$$$$$$$$$$$$$$$
+
+.. admonition:: Definición
+	
+	Dos matrices `A, B \in \mathcal M_{m \times n}(\mathbb K)` son equivalentes
+	por filas (`A \sim_f B`) si existen `E_1, \cdots, E_s` matrices elementales de
+	orden `m` tal que `A = E_s \cdots E_1 B`
+
+Propiedades
+%%%%%%%%%%%
+
+Reflexiva:
+	.. math::
+		
+		A \sim_f A
+
+Simétrica:
+	.. math::
+		
+		A \sim_f B \Leftrightarrow B \sim_f A
+
+Transitiva:
+	.. math::
+		
+		\left.
+		\begin{matrix}
+			A \sim_f B \\
+			A \sim_f C
+		\end{matrix}
+		\right\} \Rightarrow A \sim_f C
+
+.. admonition:: Teorema
+	
+	`A \in \mathcal M_{m \times n}(\mathbb K)`
+	
+	`A` es equivalente por filas con alguna matriz escalonada y
+	con una única matriz escalonada reducida.
+
+.. admonition:: Proposición
+	
+	Sean `A, B \in \mathcal M_n(\mathbb K)` equivalentes por filas
+	(`A \sim_f B`). Se verifica:
+	
+	.. math::
+		
+		A \text{ es no singular } \Leftrightarrow B \text{ es no singular}
+	
+	.. admonition:: Demostración
+		
+		.. math::
+			
+			\begin{matrix}
+				"\Rightarrow" & \\
+							  & A \sim_f B \Leftrightarrow
+							    \exists E_1, \cdots, E_s \text{ matrices elementales }
+							    \quad / \quad
+							    \color{blue} ( \color{black} E_s \cdots E_1 A \color{blue} )^1 \color{black} = B
+							    \wedge
+							    B^{-1} = (E_s \cdots E_1 A)^{-1} = A^{-1} E_1^{-1} \cdots E_s^{-1} \\
+				"\Leftarrow"  & \\
+							& \text{Como } A \sim_f B \Leftrightarrow B \sim_f A \text{ se aplica el mismo razonamiento.} &
+			\end{matrix}
+			\\
+			\color{blue} 1 \mapsto \text { Es no singular por ser producto de no singulares.}
+
+.. admonition:: Observación
+	
+	Sea `A \in \mathcal M_n(\mathbb K)`
+	
+	.. math::
+		
+		A \text{ tiene una fila nula —i.e. una fila de ceros}
+		
+		\Downarrow
+		
+		A \text{ no tiene inversa}
+
+.. admonition:: Proposición
+	
+	Con `A \in \mathcal M_n(\mathbb K)` escalonada reducida
+	
+	.. math::
+		
+		A \text{ no singular } \Leftrightarrow A = I_n
+	
+	.. admonition:: Demostración
+		
+		.. math::
+			
+			\underbrace{
+				\left.
+				\begin{matrix}
+					A \text{ no singular } \Rightarrow A \text{ no tiene ninguna fila nula} \\
+					A \text{ escalonada }
+				\end{matrix}
+				\right\}
+			}
+			
+			\Downarrow
+			
+			\text{ número de pivotes } = \text{ número de filas } = n = \text{ número de columnas }
+			
+			\Downarrow
+			
+			A \text{ reducida, }
+			A = \begin{pmatrix}
+					1 		& 0 		& \cdots	& \cdots 	& 0 		\\
+					0 		& 1 		& 0 		& \cdots 	& 0 		\\
+					\vdots	& 0 		& \ddots	& \vdots 	& \vdots 	\\
+					\vdots	& \vdots 	& \vdots	& \ddots 	& \vdots 	\\
+					0		& 0			& \cdots	& 0 		& 1
+				\end{pmatrix} = I_n
+	
+.. admonition:: Observación
+	
+	Con `A \in \mathcal M_n(\mathbb K)` se verifica
+	
+	.. math::
+		
+		A \text{ matriz escalonada } \wedge A \text{ no singular.}
+		
+		\Downarrow
+		
+		\text{No tiene filas de ceros, es decir, en todas las filas hay un pivote.}
+		
+		\Downarrow
+		
+		\text{Hay } n \text{ pivotes.}
+		
+		\Downarrow
+		
+		\text{En cada columna hay un pivote.}
+		
+		\Downarrow
+		
+		A \text{ es trangular superior.}
+
+.. admonition:: Proposición
+	
+	Con `A \in \mathcal M_n(\mathbb K)`
+	
+	.. math::
+		
+		A \text{ no singular } \Leftrightarrow A \sim_f I_n
+	
+	.. admonition:: Demostración
+		
+		.. math::
+			
+			\begin{matrix}
+				"\Rightarrow" & \\
+							  & \left.
+								\begin{matrix}
+									\exists! B \in \mathcal M_n(\mathbb K) \text{ escalonada reducida }
+									/ \; A \sim_f B \\
+									A \text{ no singular } \Rightarrow B \text{ no singular}
+								\end{matrix}
+								\right\} \Rightarrow B = I_n \\
+				"\Leftarrow"  & \\
+							  & \left.
+								\begin{matrix}
+									A \sim_f I_n \\
+									I_n \text{ es no singular}
+								\end{matrix}
+								\right\} \Rightarrow A \text{ es no singular}
+			\end{matrix}
+
+Escalonamiento de matrices por filas utilizando matrices elementales
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Operaciones elementales permitidas para escalonar matrices:
+
+.. csv-table::
+	:header: Matriz elemental, Operación elemental
+	
+	`E_{F_i \leftrightarrow F_j}`, Intercambiar la fila `i` por la fila `j`.
+	`E_{\alpha F_i}` con `\alpha \in \mathbb K` y `\alpha \neq 0`, Multiplicar la fila `i` por un escalar no nulo.
+	`E_{F_i + \alpha F_j}` con `i \neq j` y `\alpha \in \mathbb K`, Sumarle a una fila un múltiplo de otra.
+
+Cálculo de la inversa de una matriz
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+Con `A \in \mathcal M_n(\mathbb K)` no singular
+
+.. math::
+	
+	\exists E_1, \cdots, E_s \; / \; E_s \cdots E_1 A = B \text{ escalonada reducida } = I_n
+
+Es decir, existen `t_1, \cdots, t_s` transformaciones elementales en filas que aplicadas
+sucesivamente transforman `A` en una matriz escalonada reducida.
+
+.. admonition:: Ejemplo
+	
+	.. math::
+		
+		A = \begin{pmatrix}
+				1 & 2 \\
+				3 & 4
+			\end{pmatrix} \xrightarrow[F_2 - 3F_1]{}
+			\begin{pmatrix}
+				1 & 2 \\
+				0 & -2
+			\end{pmatrix} \xrightarrow[\frac{-1}{2} F_2]{}
+			\begin{pmatrix}
+				1 & 2 \\
+				0 & 1
+			\end{pmatrix} \xrightarrow[F_1 - 2F_2]{}
+			\begin{pmatrix}
+				1 & 0 \\
+				0 & 1
+			\end{pmatrix} = I_2
+	
+	O, lo que es lo mismo,
+	
+	.. math::
+		
+		\begin{matrix}
+			\underbrace{E_{F_1 - 2F_2} E_{\frac{-1}{2} F_2} E_{F_2 - 3F_1} A = I_2} \\
+			\Downarrow \\
+			E_{F_1 - 2F_2} E_{\frac{-1}{2} F_2} E_{F_2 - 3F_1} = A^{-1} \\
+			\\
+			I_2 \xrightarrow[F_2 - 3F_1]{}
+			\begin{pmatrix}
+				1 & 0 \\
+				-3 & 1
+			\end{pmatrix} \xrightarrow[\frac{-1}{2} F_2]{}
+			\begin{pmatrix}
+				1 			& 0				\\
+				\frac{3}{2} & \frac{-1}{2}
+			\end{pmatrix} \xrightarrow[F_1 - 2F_2]{}
+			\begin{pmatrix}
+				-2 			& 1				\\
+				\frac{3}{2} & \frac{-1}{2}
+			\end{pmatrix} = A^{-1}
+		\end{matrix}
+
+Por lo que, si `A \in \mathcal M_n(\mathbb K)` es no singular, para calcular su
+inversa basta con *ampliar* `A` con la identidad y transformar la parte de
+`A` hasta convertirla en la identidad —de este modo la parte que inicialmente
+era la identidad se habrá transformado en `A^{-1}`, es decir
+
+.. math::
+	
+	\left( A \middle| I_n \right) \xrightarrow[t_1]{} \cdots \xrightarrow[t_s]{} \left( I_n \middle| A^{-1} \right)
+
+
+Rango por filas
+$$$$$$$$$$$$$$$
+
+.. admonition:: Definición
+	
+	Sea `A \in \mathcal M_{m \times n}(\mathbb K)`
+	
+	Se define el rango por filas de `A`, `r_f(A)`,
+	como el número de pivotes de cualquier matriz
+	escalonada equivalente por filas con `A`.
+
+.. note::
+	
+	Toda matriz escalonada equivalente con `A` tiene el
+	mismo número de pivotes.
+	
+	Si `B` es escalonada entonces el número de pivotes de `B` es igual
+	al número de pivotes de la única matriz escalonada reducida equivalente
+	por filas con `B`.
+	
+	Con `B` escalonada,
+	
+	.. math::
+		
+		b_{ij} \text{ pivote de } B \Leftrightarrow b_{ij} \neq 0
+	
+	Para pasar de `B` a la escalonada reducida:
+	
+	#) `\frac{1}{b_{ij}} F_i` —todos los pivotes pasan a ser `1`.
+	
+	#) `F_k - b_{kj} F_i \; \forall k < i` —la cual es una operación que conserva
+	   el número de pivotes.
+	
+	.. admonition:: Ejemplo
+		
+		.. math::
+			
+			\begin{pmatrix}
+				2 & 3 & 1 & 1 \\
+				0 & 0 & 7 & 2 \\
+				0 & 0 & 0 & 5
+			\end{pmatrix} \xrightarrow[\frac{1}{2} F_1 \; ; \; \frac{1}{7} F_2 \; ; \; \frac{1}{5} F_3]{}
+			\begin{pmatrix}
+				1 & \frac{3}{2} & \frac{1}{2} & \frac{1}{2} \\
+				0 & 0 			& 1 		  & \frac{2}{7} \\
+				0 & 0 			& 0 		  & 1
+			\end{pmatrix} \xrightarrow[F_2 - \frac{2}{7} F_3]{}
+			\begin{pmatrix}
+				1 & \frac{3}{2} & \frac{1}{2} & \frac{1}{2} \\
+				0 & 0 			& 1 		  & 0			\\
+				0 & 0 			& 0 		  & 1
+			\end{pmatrix} \rightarrow \cdots
+			
+			\cdots \xrightarrow[F_1 - \frac{1}{2} F_3]{}
+			\begin{pmatrix}
+				1 & \frac{3}{2} & \frac{1}{2} & 0 \\
+				0 & 0 			& 1 		  & 0 \\
+				0 & 0 			& 0 		  & 1
+			\end{pmatrix} \xrightarrow[F_1 - \frac{1}{2} F_2]{}
+			\begin{pmatrix}
+				1 & \frac{3}{2} & 0 & 0 \\
+				0 & 0 			& 1 & 0 \\
+				0 & 0 			& 0 & 1
+			\end{pmatrix} \text{ escalonada reducida}
+
+.. admonition:: Corolario
+	
+	Con `A \in \mathcal M_n(\mathbb K)`
+	
+	.. math::
+		
+		A \text{ no singular } \Leftrightarrow A \sim_f I_n \Leftrightarrow r_f(A) = n
+
+Determinantes
+$$$$$$$$$$$$$
+
+Con `A = (a_{ij}) \in \mathcal M_2(\mathbb K)` se define el determinante de `A` como
+
+.. math::
+	
+	\det(A) = \begin{vmatrix}
+				a_{11} & a_{12} \\
+				a_{21} & a_{22}
+			  \end{vmatrix} = a_{11} a_{22} - a_{21} a_{12}
+
+.. admonition:: Definición
+	
+	Sea `A \in \mathcal M_n(\mathbb K)`
+	
+	- Si `n = 1` se define `|A| := a_{11}`
+	
+	- Si `n > 1`
+	  
+	  .. math::
+		
+		|A| := a_{11} \alpha_{11} + \cdots + a_{n1} \alpha_{n1}
+	  
+	  siendo
+	  
+	  .. math::
+		
+		\alpha_{i1} := (-1)^{i + 1} |A_{i1}| \quad \text{adjunto del elemento } a_{i1}
+	  
+	  y
+	  
+	  .. math::
+		
+		A_{ij} := \text{ matriz obtenida de } A \text{ eliminando la fila } i \text{ y la columna } j
+	  
+	  Lo que se conoce como el *desarrollo de Laplace por la 1ª columna*.
+
+Desarrollo de Laplace por la fila `i`-ésima
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Se verifica que
+
+.. math::
+	
+	|A| = a_{i1} \alpha_{i1} + a_{i2} \alpha_{i2} + \cdots + a_{in} \alpha_{in} \quad \forall i = 1, \cdots, n
+
+Determinante de una matriz triangular superior
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+.. admonition:: Definición
+	
+	Con `A \in \mathcal M_n(\mathbb K)` triangular superior se verifica
+	
+	.. math::
+		
+		|A| = a_{11} a_{22} \cdots a_{nn}
+	
+	.. admonition:: Demostración
+		
+		Por inducción en `n`
+		
+		- Si `n = 1`
+		  
+		  .. math::
+			
+			|A| = a_{11}
+		
+		- Si `n > 1` la fórmula es cierta para `n - 1`.
+		
+		- Caso general:
+		  
+		  .. math::
+			
+			A = \begin{pmatrix}
+					a_{11} & \cdots & \cdots & \cdots & \cdots \\
+					0	   & a_{22} & \cdots & \cdots & \cdots \\
+					\vdots & 0 		& \ddots & \vdots & \vdots \\
+					\vdots & \vdots & \vdots & \ddots & \vdots 	\\
+					0	   & 0		& 0		 & 0 	  & a_{nn}
+				\end{pmatrix}
+		  
+		  Por lo que tenemos que el desarrollo de Laplace por la 1ª columna es
+		  
+		  .. math::
+			
+			|A| = a_{11}(-1)^{1 + 1} |A_{11}| = a_{11} a_{22} \cdots a_{nn}
+		  
+		  Con
+		  
+		  .. math::
+			
+			A_{11} \in \mathcal M_{n - 1}(\mathbb K)
+
+.. admonition:: Corolario
+	
+	.. math::
+		
+		|I_n| = 1
+
+
+.. _propiedades-determinantes:
+
+Propiedades de los determinantes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#) .. math::
+	
+	\left.
+	\begin{matrix}
+		A, A', A'' \in \mathcal M_n(\mathbb K)        \\
+		\exists i \; / \; F_i(A) = F_i(A') + F_i(A'') \\
+		F_j(A) = F_j(A') = F_j(A'') \; \forall j \neq i
+	\end{matrix}
+	\right\} \Rightarrow |A| = |A'| + |A''|
+   
+   .. admonition:: Ejemplo
+	
+	.. math::
+		
+		A = \begin{pmatrix}
+				1 & 2 & 3 \\
+				4 & 5 & 6 \\
+				7 & 8 & 9
+			\end{pmatrix}
+		\quad
+		A' = \begin{pmatrix}
+				1 & 2 & 3 \\
+				3 & 2 & 5 \\
+				7 & 8 & 9
+			 \end{pmatrix}
+		\quad
+		A'' = \begin{pmatrix}
+				1 & 2 & 3 \\
+				1 & 3 & 1 \\
+				7 & 8 & 9
+			  \end{pmatrix}
+
+#) .. math::
+	
+	A \in \mathcal M_n(\mathbb K) \text{ tiene dos filas iguales } \Rightarrow |A| = 0
+
+#) Si se intercambian dos filas de `A` el determinante cambia de signo.
+
+#) Si multiplicamos una fila de `A` por un escalar `\beta \in \mathbb K`, el determinante de
+   la nueva matriz es
+   
+   .. math::
+	
+	\beta |A|
+   
+   Luego,
+   
+   .. math::
+	
+	A \text{ tiene una fila de } 0 \Rightarrow |A| = 0
+
+#) Si a la fila `i`-ésima de `A` le sumamos `\alpha` veces la fila
+   `j`-ésima —con `i \neq j`—, entonces el valor del determinante no varía.
+
+.. admonition:: Demostración de la propiedad 3 utilizando las propiedades 1 y 2
+	
+	.. math::
+		
+		\begin{matrix}
+			\\
+			\\
+			i \rightarrow \\
+			j \rightarrow \\
+			\\
+			\\
+		\end{matrix}
+		\begin{vmatrix}
+			F_1(A) \\
+			\vdots \\
+			F_i(A) + F_j(A) \\
+			F_j(A) + F_i(A) \\
+			\vdots \\
+			F_n(A)
+		\end{vmatrix} = 0 \quad (\text{El determinante es } 0 \text{ por tener la matriz dos filas iguales})
+		\\
+		\\
+		\begin{matrix}
+			\\
+			\\
+			i \rightarrow \\
+			\\
+			j \rightarrow \\
+			\\
+			\\
+		\end{matrix}
+		\begin{vmatrix}
+			F_1(A) \\
+			\vdots \\
+			F_i(A) \\
+			\vdots \\
+			F_j(A) + F_i(A) \\
+			\vdots \\
+			F_n(A)
+		\end{vmatrix} +
+		\begin{vmatrix}
+			F_1(A) \\
+			\vdots \\
+			F_j(A) \\
+			\vdots \\
+			F_j(A) + F_i(A) \\
+			\vdots \\
+			F_n(A)
+		\end{vmatrix} =
+		\begin{vmatrix}
+			F_1(A) \\
+			\vdots \\
+			F_i(A) \\
+			\vdots \\
+			F_j(A) \\
+			\vdots \\
+			F_n(A)
+		\end{vmatrix} +
+		\begin{vmatrix}
+			F_1(A) \\
+			\vdots \\
+			F_i(A) \\
+			\vdots \\
+			F_i(A) \\
+			\vdots \\
+			F_n(A)
+		\end{vmatrix} =
+		\begin{vmatrix}
+			F_1(A) \\
+			\vdots \\
+			F_j(A) \\
+			\vdots \\
+			F_j(A) \\
+			\vdots \\
+			F_n(A)
+		\end{vmatrix} +
+		\begin{vmatrix}
+			F_1(A) \\
+			\vdots \\
+			F_j(A) \\
+			\vdots \\
+			F_i(A) \\
+			\vdots \\
+			F_n(A)
+		\end{vmatrix} = 0
+
+Determinantes y matrices equivalentes
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+Con `A, E \in \mathcal M_n(\mathbb K) \; / \; E \text{ elemental}`
+
+.. math::
+	
+	|EA| = |E||A|
+
+.. admonition:: Observaciones
+	
+	#) .. math::
+		
+		\begin{matrix}
+			\underbrace{
+				A \in \mathcal M_n(\mathbb K) \text{ no singular } \Leftrightarrow
+				A \sim_f I_n \Leftrightarrow I_n \sim_f A \Leftrightarrow
+				\exists E_1, \cdots, E_r \in \mathcal M_n(\mathbb K) \text{ elementales } \; / \;
+				E_r \cdots E_1 I_n = A
+			} \\
+			\Downarrow \\
+			|A| = |E_r \cdots E_1| = |E_r| |E_{r - 1} \cdots E_1| = |E_r| |E_{r - 1}| \cdots |E_1| \neq 0
+		\end{matrix}
+	
+	#) .. math::
+		
+		\begin{matrix}
+			\underbrace{
+				A \in \mathcal M_n(\mathbb K) \text{ singular } \Leftrightarrow
+				A \sim_f A' \Leftrightarrow A' \sim_f A
+			} \\
+			\Updownarrow \\
+			\exists E_1, \cdots, E_s \in \mathcal M_n(\mathbb K) \text{ elementales } \; / \;
+			A = E_s \cdots E_1 A' \\
+			\Downarrow \\
+			|A| = |E_s \cdots E_1 A'| = |E_s| |E_{s - 1} A'| =
+			|E_s| \cdots |E_2| |E_1 A'| = |E_s| \cdots |E_1| |A'| =^{\color{blue} 1} 0 \\
+		\end{matrix}
+		\begin{matrix}
+			A' \text{ escalonada reducida} \\
+			\text{Número de pivotes de } A' < n \\
+			(A' \text{ tiene alguna fila de ceros})
+		\end{matrix}
+		\\
+		\color{blue} 1 \mapsto |A'| = 0
+
+.. admonition:: Proposición
+	
+	Con `A \in \mathcal M_n(\mathbb K)`
+	
+	.. math::
+		
+		A \text{ no singular } \Leftrightarrow |A| \neq 0
+
+.. admonition:: Teorema
+	
+	Con `A, B \in \mathcal M_n(\mathbb K)`
+	
+	.. math::
+		
+		|AB| = |A| |B|
+	
+	.. admonition:: Demostración
+		
+		.. math::
+			
+			\begin{matrix}
+				\text{Caso } 1 \text{: } & A \text{ no singular} & \\
+										 & \Updownarrow \\
+										 & \exists E_1, \cdots, E_r \text{ elementales} \; / \; \\
+										 &		\quad \quad E_r \cdots E_1 = A  \\
+										 &		\quad \wedge \\
+										 &		|AB| = |E_r \cdots E_1 B| = |E_r| \cdots |E_{r - 1} B| = \cdots =
+												|E_r| \cdots |E_2| |E_1 B| =
+												\color{blue} ( \color{black} |E_r| \cdots |E_2| |E_1| \color{blue}{)^1}
+												\color{black} |B| = |A| |B| \\
+				& \\
+				\text{Caso } 2 \text{: } & A \text{ singular} & \\
+										 & \Updownarrow \\
+										 & \exists E_1, \cdots, E_s \text{ elementales} \; / \; \\
+										 &		\quad \quad \quad \exists A' \in \mathcal M_n(\mathbb K)
+													\text{ matriz con alguna fila de ceros}  \; / \; \\
+										 &		\underbrace{
+													A = E_s \cdots E_1 A' \wedge
+													AB = (E_s \cdots E_1 A') B = E_s \cdots E_1 
+													\color{blue} ( \color{black} A' B \color{blue}{)^2}
+												} \\
+										 &		\Downarrow \\
+										 &		AB \sim_f \color{blue} ( \color{black} A' B \color{blue}{)^2} \\
+										 &		\Updownarrow \\
+										 &		AB \text{ singular} \\
+										 &		\Downarrow \\
+										 &		|A| |B| = |AB| = 0
+			\end{matrix}
+			\\
+			\color{blue} 1 \mapsto |E_r| \cdots |E_2| |E_1| = |A|
+			\\
+			\color{blue} 2 \mapsto A' B \text{ es una matriz con una fila de ceros}
+
+
+Determinantes y matrices traspuestas
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+.. admonition:: Observación
+	
+	- `(E_{F_i \leftrightarrow F_j})^t = E_{C_i \leftrightarrow C_j} = E_{F_i \leftrightarrow F_j}`
+	
+	- Con `\alpha \neq 0`, `(E_{\alpha F_i})^t = E_{\alpha C_i} = E_{\alpha F_i}`
+	
+	- Con `i \neq j`, `(E_{F_i + \alpha F_j})^t = E_{C_i + \alpha C_j} = E_{F_j + \alpha F_i}`
+	  
+	  .. note::
+		
+		En este último caso la matriz elemental traspuesta no coincide con la original, aunque
+		siguen teniendo el mismo determinante.
+
+Con `A \in \mathcal M_n(\mathbb K)`
+
+.. math::
+	
+	|A| = |A^t|
+
+.. admonition:: Demostración
+	
+	.. math::
+		
+		\begin{matrix}
+			A \text{ no singular } \Leftrightarrow A^t \text{ no singular} \\
+			(A^{-1})^t = (A^t)^{-1} \\
+			A \text{ singular } \Leftrightarrow A^t \text{ singular} \\
+			\\
+			\left.
+			\begin{matrix}
+				A \text{ singular } \Leftrightarrow |A| = 0 \\
+				\Updownarrow \\
+				A^t \text{ singular } \Leftrightarrow |A^t| = 0
+			\end{matrix}
+			\right\} \\
+			\\
+			A \text{ no singular } \\
+			\Updownarrow \\
+			\overbrace{
+				\exists E_1, \cdots, E_s \text{ matrices elementales} \; / \;
+				A = E_s \cdots E_1 \Rightarrow |A| = |E_s| \cdots |E_1| = |E_s^t| \cdots |E_1^t| =
+				|E_1^t \cdots E_s^t| = |A^t|
+			} \\
+			\\
+			|E_i| = |E_i^t| \quad \forall i = 1, \cdots, s \\
+			\\
+			A^t = (E_s \cdots E_1)^t = E_1^t \cdots E_s^t
+		\end{matrix}
+
+.. admonition:: Corolario
+	
+	Con `A = (a_{ij}) \in \mathcal M_n(\mathbb K)`
+	
+	.. math::
+		
+		|A| = a_{11} \alpha_{11} + a_{12} \alpha_{12} + \cdots + a_{1n} \alpha_{1n}
+	
+	(*Desarrollo de Laplace por la 1ª fila*)
+	
+	.. admonition:: Demostración
+		
+		.. math::
+			
+			\begin{matrix}
+				|A| = |A^t| = a_{11} (-1)^{1 + 1} |(A^t)_{11}| + \cdots + a_{1n} (-1)^{1 + n} |(A^t)_{n1}| =
+				a_{11} (-1)^{1 + 1} |A_{11}| + \cdots + a_{1n} (-1)^{1 + n} |A_{1n}| \\
+			\end{matrix}
+			\\
+			(A^t)_{i1} = (A_{1i})^t \Rightarrow |(A^t)_{i1}| = |(A_{1i})^t| = |A_{1i}|
+
+.. admonition:: Proposición
+	
+	.. math::
+		
+		\begin{matrix}
+			|A| = a_{i1} \alpha_{i1} + \cdots + a_{in} \alpha_{in} \quad \forall i = 1, \cdots, n \\
+			\\
+			|A| = a_{1j} \alpha_{1j} + \cdots + a_{nj} \alpha_{nj} \quad \forall j = 1, \cdots, n
+		\end{matrix}
+	
+	Por lo que las propiedades de los determinantes enunciadas en :ref:`propiedades-determinantes`
+	son aplicables también por columnas.
+
+.. admonition:: Proposición
+	
+	Con `A = (a_{ij}) \in \mathcal M_n(\mathbb K)` no singular
+	
+	.. math::
+		
+		\begin{matrix}
+			A^{-1} = \frac{1}{|A|} (\text{adj}(A))^t = \frac{1}{|A|}
+			\begin{pmatrix}
+				\alpha_{11} & \cdots & \alpha_{n1} \\
+				\alpha_{12} & \cdots & \alpha_{n2} \\
+				\vdots		&		 & \vdots	   \\
+				\alpha_{1n} & \cdots & \alpha_{nn}
+			\end{pmatrix}
+		\end{matrix}
+		\\
+		\\
+		\text{adj}(A) = (\alpha_{ij}) \\
+		\\
+		\alpha_{ij} = (-1)^{i + j} |A_{ij}|
+	
+	.. admonition:: Demostración
+		
+		Con `B := \frac{1}{|A|} \text{ adj}(A)^t`
+		
+		.. math::
+				
+				\begin{matrix}
+					B = A^{-1} \Leftrightarrow AB = I_n \\
+					\\
+					\underbrace{
+						\left.
+						\begin{matrix}
+							AB(i, i) = a_{i1} B(1, i) + a_{i2} B(2, i) + \cdots + a_{in} B(n, i) \\
+							\\
+							B(1, i) = \frac{1}{|A|}(\text{adj} A)^t(1, i) =
+								\frac{1}{|A|} \text{ adj}(A)(i, 1) = \frac{1}{|A|} \alpha_{i1}
+						\end{matrix}
+						\right\}
+					} \\
+					\Downarrow \\
+					AB(i, i) = a_{i1} \frac{1}{|A|} \alpha_{i1} + \cdots + a_{in} \frac{1}{|A|} \alpha_{in} =
+					\frac{1}{|A|} \color{blue} (
+									\color{black} a_{i1} \alpha_{i1} + \cdots + a_{in} \alpha_{in}
+								  \color{blue}{)^1} \color{black} = \frac{1}{|A|} |A| = 1 \\
+					\\
+					\forall \; i \neq j \; AB(i, j) = 0 \color{blue}{^2}
+				\end{matrix} \\
+				\\
+				\color{blue} 1 \mapsto \text{ Es el desarrollo de Laplace por la fila } i \text{-ésima.}
+				\\
+				\color{blue} 2 \mapsto \color{red}{\text{ Pendiente de demostrar.}}
+
+.. admonition:: Proposición
+	
+	El desarrollo del determinante usando la regla de Laplace se puede
+	hacer por cualquier fila o columna.
+	
+	.. admonition:: Demostración
+		
+		Con `A = (a_{ij}) \in \mathcal M_n(\mathbb K)`
+		
+		.. math::
+			
+			\begin{matrix}
+				A' := E_{F_1 \leftrightarrow F_2} A =
+				\begin{pmatrix}
+					a_{21} & \cdots & a_{2j} & \cdots & a_{2n} \\
+					a_{11} & \cdots & a_{1j} & \cdots & a_{1n} \\
+					a_{31} & \cdots & \cdots & \cdots & a_{3n} \\
+					\vdots &		& \vdots & 		  & \vdots \\
+					a_{n1} & \cdots & \cdots & \cdots & a_{nn}
+				\end{pmatrix} \\
+				\\
+				|A| = -|A'| = -\Big(
+									a_{21}(-1)^{1 + 1} |A_{21}| + \cdots + a_{2n}(-1)^{1 + n} |A_{2n}|
+							   \Big) =
+							   a_{21}(-1)^{2 + 1} |A_{21}| + \cdots + a_{2n}(-1)^{2 + n} |A_{2n}|
+			\end{matrix}
