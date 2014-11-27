@@ -11,3 +11,4 @@ Apuntes de Álgebra
 .. toctree::
    
    ./sections/1.rst
+   ./sections/2.rst

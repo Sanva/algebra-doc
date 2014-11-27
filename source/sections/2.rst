@@ -1,0 +1,239 @@
+
+.. default-role:: math
+
+Tema 2
+======
+
+Sistemas de ecuaciones lineales
+-------------------------------
+
+Una ecuación lineal sobre el cuerpo `\mathbb K` con
+`n` incognitas —o variables— `x_1, \cdots, x_n` es una
+expresión de la forma
+
+.. math::
+	
+	\begin{matrix}
+		a_1 x_1 + a_2 x_2 + \cdots + a_n x_n = b & a_i \in \mathbb K \; \forall i = 1, \cdots, n \\
+												 & b \in \mathbb K
+	\end{matrix}
+
+Los elementos `a_i` se llamarán *coeficientes*, mientras que `b` es el *término
+independiente*.
+
+.. admonition:: Ejemplo
+	
+	.. math::
+		
+		x + y = 0
+
+Un elemento `(\alpha_1, \cdots, \alpha_n) \in \mathbb K^n` es una solución de
+una ecuación lineal si se verifica
+
+.. math::
+	
+	a_1 \alpha_1 + \cdots + a_n \alpha_n = b
+
+.. admonition:: Definición
+	
+	Un sistema de ecuaciones lineales con coeficientes en `\mathbb K` y
+	con `n` incógnitas —o variables— `x_1, \cdots, x_n` es
+	
+	.. math::
+		
+		\left.
+		\begin{matrix}
+			a_{11} x_1 + \cdots + a_{1n} x_n = b_1 \\
+			a_{21} x_1 + \cdots + a_{2n} x_n = b_2 \\
+			\vdots \\
+			a_{m1} x_1 + \cdots + a_{mn} x_n = b_m \\
+		\end{matrix}
+		\right\} \\
+		a_{ij} \in \mathbb K \; \forall i = 1, \cdots, m \\
+		                        \forall j = 1, \cdots, n \\
+		b_i \in \mathbb K \; \forall i = 1, \cdots, m
+	
+	Es decir, `m` ecuaciones con coeficientes en `\mathbb K` en
+	las mismas `n` incógnitas.
+	
+	- `(\alpha_1, \cdots, \alpha_n) \in \mathbb K^n` es solución
+	  del sistema si es la solución de cada una de las `m` ecuaciones
+	  lineales que lo forman.
+	
+	- Si `b_j = 0 \; \forall j = 1, \cdots, m` se dice que el
+	  sistema es *homogéneo*.
+	
+	- Si el sistema tiene solución se dice que es *compatible*, y será
+	  
+	  - *Compatible Determinado* si la solución es única.
+	  
+	  - *Compatible Indeterminado* si tiene más de una solución.
+	
+	- Si el sistema no tiene solución se dice que es *Incompatible*.
+	
+	- `A = (a_{ij}) \in \mathcal M_{m \times n}(\mathbb K)` es la matriz
+	  de coeficientes del sistema.
+	
+	- `b = \begin{pmatrix} b_1 \\ b_2 \\ \vdots \\ b_m \end{pmatrix} \in \mathcal M_{m \times 1}` es
+	  la matriz de términos independientes del sistema.
+	
+	- `Ax = b` es la *expresión matricial* del
+	  sistema —con `x = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}`
+	
+	- `(A|b) \in \mathcal M_{m \times (n + 1)}` es la *matriz ampliada* del sistema.
+
+.. admonition:: Definición
+	
+	Dos sistemas `S` y `S'` de ecuaciones lineales en `\mathbb K` en las
+	mismas `n` incógnitas —`x_1, \cdots, x_n`— son equivalentes si tienen
+	el mismo conjunto de soluciones.
+	
+	.. note::
+		
+		Si ambos son incompatibles tienen el mismo conjunto de soluciones.
+
+.. admonition:: Definición
+	
+	Dado un sistema `Ax = B`, el sistema de ecuaciones cuya matriz
+	ampliada se obtiene de `(A|B)` después de una sucesión finita
+	de operaciones elementales en filas, es un sistema equivalente a
+	`Ax = B`.
+	
+	.. admonition:: Demostración
+		
+		.. math::
+			
+			\begin{matrix}
+				(A|B) \xrightarrow[
+					\text{Op. elemental en filas con la matriz elemental } E
+				]{} E(A|B) = (EA|EB) \\
+				\\
+				(\alpha_1, \cdots, \alpha_n) \in \mathbb K^n \text{ es solución de } Ax = B \\
+				\Updownarrow \\
+				A \begin{pmatrix} \alpha_1 \\ \vdots \\ \alpha_n \end{pmatrix} = B \\
+				\Updownarrow \\
+				EA \begin{pmatrix} \alpha_1 \\ \vdots \\ \alpha_n \end{pmatrix} = EB \\
+				\Updownarrow \\
+				(\alpha_1, \cdots, \alpha_n) \in \mathbb K^n \text{ es solución de } (EA)x = EB \\
+			\end{matrix}
+
+.. admonition:: Definición
+	
+	El sistema `Ax = B` es escalonado si la matriz `A` es escalonada.
+	
+	A las incógnitas —o variables— correspondientes a las columnas
+	de los pivotes se les llama *incógnitas principales*, y a las otras
+	*incógnitas libres*.
+
+.. admonition:: Corolario
+	
+	Todo sistema `Ax = B` es equivalente a un sistema escalonado.
+	
+	.. admonition:: Demostración
+		
+		`(A|B)` es equivalente a una matriz escalonada `(A'|B')`, entonces
+		los sistemas `Ax = B` y `A'x = B'` son equivalentes.
+
+Método de Gauss
+$$$$$$$$$$$$$$$
+
+Para resolver el sistema `Ax = B`
+
+#) Escalonamos la matriz `(A|B)`, obteniendo la matriz equivalente `(A'|B')`.
+
+#) Resolvemos `A'x = B'` con el *método de substitución hacia atrás*. Si no
+   es posible, el sistema no tiene solución.
+
+Discusión de un sistema escalonado
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+#) Si existe un pivote en la última columna de la matriz ampliada, es decir
+   `r_f(A) \neq r_f(A|B)`, el sistema es incompatible, ya que existe
+   una ecuación de la forma `0x_1 + \cdots + 0x_n = b_s \neq 0` —siendo `b_s` el
+   pivote de la columna `B`.
+
+#) Si no hay pivote en la última columna de la matriz ampliada, es decir
+   `r_f(A) = r_f(A|B)`, el sistema es compatible:
+   
+   #) .. math::
+	
+	r_f(A) = r_f(A|B) = \text{ número de incógnitas } \Rightarrow \text{ Sistema Compatible Determinado}
+   
+   #) .. math::
+	
+	\begin{matrix}
+		r_f(A) = r_f(A|B) < \text{ número de incógnitas } \\
+		\Downarrow \\
+		\text{Existen } n - r_f(A) \text{ variables libres} \\
+		\Downarrow \\
+		\text{Sistema Compatible Indeterminado}
+	\end{matrix}
+   
+.. admonition:: Proposición
+	
+	Con `Ax = B` sistema de `n` ecuaciones lineales con `n` incógnitas
+	
+	.. math::
+		
+		\text{El sistema es compatible y determinado} \Leftrightarrow A \text{ es no singular}
+	
+	.. admonition:: Demostración
+		
+		.. math::
+			
+			\begin{matrix}
+				"\Leftarrow"  & \\
+							  & \left.
+								\begin{matrix}
+									Ax = B \\
+									A \text{ no singular}
+								\end{matrix}
+								\right\} \Rightarrow A^{-1} A x = A^{-1} B = A^{-1} A x = x \\
+				"\Rightarrow" & \\
+							  & r_f(A) = r_f(A|B) = n \Rightarrow A \sim_f I_n \Rightarrow
+								A \text{ es no singular}
+			\end{matrix}
+
+Regla de Cramer
+$$$$$$$$$$$$$$$
+
+Con `Ax = B` Sistema Compatible Determinado
+
+.. math::
+	
+	x_i = \frac{
+		\begin{matrix}
+			\begin{matrix}
+				 & & i & & \\
+				 & & \downarrow & &
+			\end{matrix} \\
+			\begin{vmatrix}
+				a_{11} & \cdots & b_1 	 & \cdots & a_{1n} \\
+				\vdots & \cdots & \vdots & \cdots & \vdots  \\
+				a_{n1} & \cdots & b_n 	 & \cdots & a_{nn}
+			\end{vmatrix}
+		\end{matrix}
+	}{|A|}
+
+.. admonition:: Demostración
+	
+	.. math::
+		
+		\begin{matrix}
+			A^{-1} = \frac{1}{|A|} (\text{adj} A)^t \\
+			\\
+			\begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} = A^{-1} B \\
+			\\
+			x_i = X(i, 1) = (A^{-1} B) (i, 1) = \displaystyle \sum_{k = 1}^n A^{-1}(i, k) B(k, 1) \\
+			\\
+			\xrightarrow[]{\text{Observación}} (\text{adj } A)^t (i, k) = (\text{adj } A) (k, i) = \alpha_{ki} \\
+			\\
+			\begin{matrix}
+				x_i = & \underbrace{ \frac{1}{|A|} \sum_{k = 1}^n \alpha_{ki} b_k } \\
+					  & \begin{matrix}
+						  \text{Desarrollo de} \\
+						  \text{Laplace por la} \\
+						  \text{columna } i
+					    \end{matrix}
+			\end{matrix}
+		\end{matrix}
