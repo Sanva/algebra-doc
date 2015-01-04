@@ -48,7 +48,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Apuntes de Álgebra'
-copyright = u'2014, Valentín Barros Puertas'
+#copyright = u'2014, Valentín Barros Puertas'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
