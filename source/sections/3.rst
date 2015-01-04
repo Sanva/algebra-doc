@@ -1,0 +1,1652 @@
+
+.. default-role:: math
+
+Tema 3
+======
+
+Espacios Vectoriales
+--------------------
+
+.. math::
+	
+	\begin{matrix}
+		\begin{matrix}
+			\mathbb R^3 & \mathbb C^3 & \mathbb Q^3 \\
+			\mathbb R^n & \mathbb C^n & \mathbb Q^n \\
+			\mathcal M_{m \times n}(\mathbb R) & & \mathcal M_{m \times n}(\mathbb K)
+		\end{matrix} &
+		\begin{matrix}
+			+ \text{ operación interna que cumple las siguientes propiedades} \\
+			\left.
+			\begin{matrix}
+				\text{asociativa} \\
+				\text{elemento neutro} \\
+				\text{opuesto} \\
+				\text{conmutativa} \\
+			\end{matrix}
+			\right\} \text{ Grupo Abeliano}
+		\end{matrix}
+	\end{matrix}
+
+.. admonition:: Definición
+	
+	Con `V` conjunto no vacío y `\mathbb K` cuerpo, se dice que `V` es un `\mathbb K`-espacio
+	vectorial si verifica
+	
+	#) `(V, +)` es un Grupo Abeliano.
+	
+	#) La multiplicación por escalares,
+	   
+	   .. math::
+		
+		\mathbb K \times V \rightarrow V \\
+		(\alpha, v) \leadsto \alpha v
+	   
+	   verifica las siguientes propiedades:
+	   
+	   .. math::
+		
+		\forall \; \alpha, \beta \in \mathbb K \\
+		\forall \; v, w \in V
+	   
+	   #) `(\alpha + \beta)v = \alpha v + \beta v`
+	   
+	   #) `\alpha(v + w) = \alpha v + \alpha w`
+	   
+	   #) `(\alpha \beta) v = \alpha(\beta v)`
+	   
+	   #) `1v = v`
+	
+	.. note::
+		
+		A los elementos de `V` se les llama *vectores* y a los
+		elementos del cuerpo `\mathbb K` se les llama *escalares*.
+	
+	.. admonition:: Ejemplo
+		
+		.. math::
+			
+			U = \left\{ (x, y, z) \in \mathbb R^3 \; / \; z = 0 \right\} \subset \mathbb R^3
+
+.. admonition:: Definición
+	
+	Con `V \; \mathbb K`-espacio vectorial, un subconjunto no vacío `U` de `V` es un subespacio
+	vectorial de `V` si
+	
+	#) `\forall u, u' \in U \quad u + u' \in U`
+	
+	#) `\forall u \in U \; \forall \alpha \in \mathbb K \quad \alpha u \in U`
+	
+	.. admonition:: Ejemplo
+		
+		.. math::
+			
+			U' = \left\{ (x, y) \in \mathbb R^2 \; / \; x = y - 1 \right\} \subset \mathbb R^2
+		
+		`U'` no es un subespacio vectorial de `\mathbb R^2` ya que
+		
+		.. math::
+			
+			(0, 1) \in U' \wedge 0 \in \mathbb R \wedge 0(0, 1) \notin U'
+
+Propiedades
+$$$$$$$$$$$
+
+Con `V \; \mathbb K`-espacio vectorial, `0` el cero escalar y `0_V` el cero vectorial
+se verifica
+
+#) `\alpha v = 0_V \Leftrightarrow \alpha = 0 \vee v = 0_V \quad \forall \alpha \in \mathbb K, \forall v \in V`
+   
+   .. admonition:: Demostración
+	
+	.. math::
+		
+		\begin{matrix}
+			"\Leftarrow" & \\
+						 & \text{Con } \alpha = 0, \quad \begin{matrix}
+															0v = (0 + 0)v = 0v + 0v \\
+															0 = -(0v) + 0v + 0v = 0 + 0v = 0v
+														\end{matrix} \\
+			"\Rightarrow" & \\
+						  & \left.
+						    \begin{matrix}
+								\alpha v = 0_V \\
+								\alpha \neq 0
+						    \end{matrix}
+						    \right\} \Rightarrow v = 0_V \text{ ya que }
+						    \left.
+						    \begin{matrix}
+								\alpha v = 0_V \\
+								\alpha \neq 0 \\
+								\exists \alpha^{-1} \in \mathbb K
+						    \end{matrix}
+						    \right\} \Rightarrow
+						    \alpha^{-1} (\alpha v) = (\alpha^{-1} \alpha) v = 1v = 0_V \Leftrightarrow v = 0_V
+		\end{matrix}
+
+#) `(-\alpha)v = -(\alpha v) = \alpha (-v) \quad \forall \alpha \in \mathbb K, \forall v \in V`
+
+#) `\alpha v = \beta v \Rightarrow \alpha = \beta \quad \forall \alpha, \beta \in \mathbb K, v \neq 0_V \in V`
+
+Combinaciones lineales
+$$$$$$$$$$$$$$$$$$$$$$
+
+.. admonition:: Definición
+	
+	Con `V \; \mathbb K`-espacio vectorial y `S \neq \emptyset` subconjunto de `V`, una
+	combinación lineal de elementos de `S` es un vector de la forma
+	`v = \alpha_1 v_1 + \cdots + \alpha_r + v_r` en donde `\alpha_1, \cdots, \alpha_r \in \mathbb K` y
+	`v_1, \cdots, v_r \in S`.
+	
+	.. admonition:: Ejemplo
+		
+		.. math::
+			
+			\begin{matrix}
+				V = \mathbb R^2 \\
+				S = \left\{ (1, 1), (1, 0), (0, -1) \right\} \\
+				(3, 7) = 2(1, 1) + (1, 0) - 5(0, -1) = 7(1, 1) - 4(1, 0)
+			\end{matrix}
+
+.. admonition:: Definición
+	
+	.. math::
+		
+		\langle S \rangle := \left\{
+								\alpha_1 v_1 + \cdots + \alpha_n v_n
+								\; \middle/ \; \begin{matrix}
+											\alpha_1, \cdots, \alpha_n \in \mathbb K \\
+											v_1, \cdots, v_n \in S
+										 \end{matrix}
+							 \right\} \subset V
+	
+	es el menor subespacio vectorial de `V` que contiene al conjunto `S`. Este
+	espacio vectorial se llama subespacio de `V` generado por el conjunto `S`.
+	
+	.. admonition:: Ejemplo
+		
+		.. math::
+			
+			\begin{matrix}
+				\emptyset \neq S = \left\{ (1, 1) \right\} \subset \mathbb R^2 \\
+				\langle (1, 1) \rangle = \left\{ \alpha (1, 1) \middle/ \alpha \in \mathbb R \right\} =
+				\left\{ (\alpha, \alpha) \middle/ \alpha \in \mathbb R \right\}
+			\end{matrix}
+	
+	.. admonition:: Demostración
+		
+		.. math::
+			
+			\begin{matrix}
+				(1) & S \subset \langle S \rangle \\
+					& u \in S \wedge u = 1u \in \langle S \rangle \\
+				\\
+				(2) & \langle S \rangle \text{ subespacio de } V \\
+					& \emptyset \neq \langle S \rangle \subset V \text{ ya que }
+						S \neq \emptyset \wedge S \subset \langle S \rangle \\
+				\\
+				(3) & \text{Menor subespacio de } V \text{ que contiene a } S \\
+					& \text{Si } U \text{ es un subespacio de } V \; / \;
+						S \subset U \Rightarrow^{\color{red} ?}
+						\langle S \rangle \subset U
+				\\
+				\\
+					& \left.
+					  \begin{matrix}
+						& \alpha_1 v_1 + \cdots + \alpha_n v_n \\
+						& v_i \in S \subset U \Rightarrow v_i \in U \\
+						\alpha_i \in \mathbb K \quad \forall i = 1, \cdots, n &
+					  \end{matrix}
+					  \right\} \Rightarrow \alpha_i v_i \in U \Rightarrow
+					  \alpha_i v_i + \cdots + \alpha_n v_n \in U
+			\end{matrix}
+
+.. admonition:: Proposición
+	
+	Con `S` y `S'` subconjuntos no vacíos de `V`
+	
+	.. math::
+		
+		\langle S \rangle = \langle S' \rangle \Leftrightarrow
+		\left\{
+		\begin{matrix}
+			S \subset \langle S' \rangle \\
+			S' \subset \langle S \rangle
+		\end{matrix}
+		\right.
+	
+	.. admonition:: Ejemplo
+		
+		.. math::
+			
+			\langle S \rangle = \langle (1, 1), (0, -1) \rangle =
+			\langle (1, 0), (0, -1), (3, 4) \rangle = \langle S' \rangle
+	
+	.. admonition:: Demostración
+		
+		.. math::
+			
+			\begin{matrix}
+				"\Rightarrow" & \\
+							  & S \subset \langle S \rangle = \langle S' \rangle \\
+							  & S' \subset \langle S' \rangle = \langle S \rangle \\
+				"\Leftarrow"  & \\
+							  & \left.
+								\begin{matrix}
+									\langle U \rangle \text{ es el menor subespacio vectorial que contiene a } U \\
+									S \subset \langle S' \rangle \Rightarrow \langle S \rangle \subset \langle S' \rangle \\
+									S' \subset \langle S \rangle \Rightarrow \langle S' \rangle \subset \langle S \rangle
+								\end{matrix}
+								\right\} \Rightarrow \langle S \rangle = \langle S' \rangle
+			\end{matrix}
+
+.. admonition:: Observación
+	
+	Con `\emptyset \neq S = V` y `u \in V`
+	
+	.. math::
+		
+		\langle S \rangle = \langle S \cup \left\{ u \right\} \rangle \Leftrightarrow
+		u \in \langle S \rangle
+	
+	.. admonition:: Demostración
+		
+		.. math::
+			
+			\langle S \rangle = \langle S \cup \left\{ u \right\} \rangle \Leftrightarrow
+			\left\{
+			\begin{matrix}
+				S \subset \langle S \cup \left\{ u \right\} \rangle \\
+				S \cup \left\{ u \right\} \subset \langle S \rangle
+			\end{matrix}
+			\right\} \Leftrightarrow u \in \langle S \rangle
+
+.. _propiedades-combinaciones-lineales:
+
+Propiedades
+%%%%%%%%%%%
+
+Con `v_1, \cdots, v_n \in V`, `0 \neq \alpha \in \mathbb K` y `\beta \in \mathbb K`.
+
+#) .. math::
+	
+	\langle v_1, \cdots, v_i, v_j, \cdots, v_n \rangle =
+	\langle v_1, \cdots, v_j, v_i, \cdots, v_n \rangle
+   
+   .. admonition:: Demostración
+	
+	Trivial, ya que en los conjuntos no hay orden.
+
+#) .. math::
+	
+	\underset{ S }{ \underbrace{ \langle v_1, \cdots, v_n \rangle } } =
+	\underset{ S' }{ \underbrace{ \langle v_1, \cdots, \alpha v_i, \cdots, v_n \rangle } } \quad
+	\alpha \neq 0
+   
+   .. admonition:: Demostración
+	
+	.. math::
+		
+		\begin{array}{r}
+			v_i = \alpha^{-1} (\alpha v_i) = 1v_i \Rightarrow S \subset \langle S' \rangle \\
+			\alpha v_i \Rightarrow S' \subset \langle S \rangle
+		\end{array}
+
+#) .. math::
+	
+	\underset{ S }{ \underbrace{ \langle v_1, \cdots, v_n \rangle } } =
+	\underset{ S' }{ \underbrace{ \langle v_1, \cdots, v_i + \beta v_j, \cdots, v_n \rangle } } \quad
+	i \neq j
+   
+   .. admonition:: Demostración
+	
+	.. math::
+		
+		v_i = (v_i + \beta v_j) - \beta v_j \in \langle S' \rangle \Rightarrow
+		\left\{
+		\begin{matrix}
+			S \subset \langle S' \rangle \\
+			S' \subset \langle S \rangle
+		\end{matrix}
+		\right\} \Leftarrow
+		v_i + \beta v_j \in \langle S \rangle
+
+
+Intersección de subespacios
+$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+Con `U, W` subespacios de `V`
+
+.. math::
+	
+	U \cap W = \left\{ v \in V \middle/ v \in U \wedge v \in W \right\}
+
+es un subespacio de `U`.
+
+.. admonition:: Demostración
+	
+	.. math::
+		
+		\begin{matrix}
+			\left.
+			\begin{matrix}
+				U \subset V \\
+				W \subset V
+			\end{matrix}
+			\right\} \Rightarrow U \cap W \subset V \\
+			\\
+			\left.
+			\begin{matrix}
+				0 \in U \\
+				0 \in W
+			\end{matrix}
+			\right\} \Rightarrow 0 \in U \cap W \Rightarrow U \cap W \neq \emptyset \\
+			\\
+			v_1, v_2 \in U \cap W \Leftrightarrow^{\color{blue} 1}
+			\left.
+			\begin{matrix}
+				v_1, v_2 \in U \\
+				v_1, v_2 \in W
+			\end{matrix}
+			\right\} \Rightarrow^{\color{blue} 2}
+			\left.
+			\begin{matrix}
+				v_1 + v_2 \in U \\
+				v_1 + v_2 \in W
+			\end{matrix}
+			\right\} \Rightarrow^{\color{blue} 1} v_1 + v_2 \in U \cap W \\
+			\\
+			\left.
+			\begin{matrix}
+				\alpha \in \mathbb K \\
+				v \in U \cap W
+			\end{matrix}
+			\right\} \Leftrightarrow
+			\left.
+			\begin{matrix}
+				v \in U \\
+				v \in W
+			\end{matrix}
+			\right\} \Rightarrow
+			\left.
+			\begin{matrix}
+				\alpha v \in U \\
+				\alpha v \in W
+			\end{matrix}
+			\right\} \Leftrightarrow
+			\alpha v \in U \cap W
+		\end{matrix} \\
+		\color{blue} 1 \mapsto \text{ Definición de intersección.} \\
+		\color{blue} 2 \mapsto U \text{ y } W \text{ son subespacios vectoriales.}
+
+Unión de subespacios
+$$$$$$$$$$$$$$$$$$$$
+
+Con `U, W` subespacios de `V`
+
+.. math::
+	
+	U \cup W = \left\{ v \in V \middle/ v \in U \vee v \in W \right\}
+
+en general **no** es un subespacio de `V`.
+
+.. admonition:: Ejemplo
+	
+	.. math::
+		
+		\begin{matrix}
+			V = \mathbb R^2 \\
+			\\
+			U = \left\{ (x, 0) \middle/ x \in \mathbb R \right\} \\
+			\\
+			W = \left\{ (0, y) \middle/ y \in \mathbb R \right\} \\
+			\\
+			\left.
+			\begin{matrix}
+				(1, 0) \in U \subset U \cup W \\
+				(0, 1) \in W \subset U \cup W
+			\end{matrix}
+			\right\} \wedge (1, 0) + (0, 1) = (1, 1) \notin U \cup W
+		\end{matrix}
+
+Suma de subespacios
+$$$$$$$$$$$$$$$$$$$
+
+Con `U, W` subconjuntos de `V`
+
+.. math::
+	
+	U + W := \left\{ u + w \middle/ u \in U \wedge w \in W \right\} \subset V
+
+Se verifica que `U + W` es el menor subespacio de `V` que continene a `U`
+y a `W`.
+
+Además, si `S` y `S'` son subconjuntos no vacíos de `V` tales que
+`U = \langle S \rangle` y `W = \langle S' \rangle` entonces
+
+.. math::
+	
+	U + W = \langle S \cup S' \rangle
+
+.. note::
+	
+	Para entender esta proposición es útil entender las
+	propiedades descritas bajo el epígrafe :ref:`propiedades-combinaciones-lineales`.
+
+.. admonition:: Demostración
+	
+	.. math::
+		
+		\begin{matrix}
+			& 0 \in U \\
+			& 0 \in W \\
+			\\
+			& 0 = 0 + 0 \in U + W \Rightarrow U + W \neq \emptyset \\
+			(1) & \\
+				& \underbrace{
+					\left.
+					\begin{matrix}
+						u_1 + w_1 \quad u_1 \in U \quad w_1 \in W \\
+						u_2 + w_2 \quad u_2 \in U \quad w_2 \in W
+					\end{matrix}
+					\right\}
+				} \\
+				& \Downarrow \\
+				& \overbrace{
+					(u_1 + w_1) + (u_2 + w_2) =
+						\underset{ \in U }{ \underbrace{u_1 + u_2} } +
+						\underset{ \in W }{ \underbrace{w_1 + w_2} } \in U + W
+				} \\
+			(2) & \\
+			    & \underbrace{
+					\left.
+					\begin{matrix}
+						u + w \quad u \in U \quad w \in W \\
+						\alpha \in \mathbb K
+					\end{matrix}
+					\right\}
+				} \\
+				& \Downarrow \\
+				& \overbrace{
+					\alpha (u + w) =
+						\underset{ \in U }{ \underbrace{ \alpha u } } +
+						\underset{ \in W }{ \underbrace{ \alpha w } } \in U + W
+				} \\
+			\\
+			& U \subset U + W \wedge W \subset U + W \\
+			& u \in U \quad u = \underset{ \in U }{ \underbrace{ u } } + \underset{ \in W }{ \underbrace{ 0 } } \in U + W \\
+			& w \in W \quad w = \underset{ \in U }{ \underbrace{ 0 } } + \underset{ \in W }{ \underbrace{ w } } \in U + W
+		\end{matrix}
+	
+	Además de ser subespacio, es **el menor** subespacio de `V` que contiene a
+	`U` y `W`. Es decir, si `T` fuese subespacio de `V` tal que `U \subset T` y
+	`W \subset T`, entonces `U + W \subset T`.
+	
+	.. admonition:: Demostración
+		
+		.. math::
+			
+			\left.
+			\begin{array}{r}
+				u + w \in U + W \\
+				u \in U \wedge w \in W
+			\end{array}
+			\middle|
+			\begin{array}{r}
+				u \in U \subset T \\
+				w \in W \subset T
+			\end{array}
+			\right\} \Rightarrow^{\color{blue} 1} u + w \in T \\
+			\\
+			\color{blue} 1 \mapsto T \text{ es subespacio.}
+
+Suma directa
+$$$$$$$$$$$$
+
+.. admonition:: Definición
+	
+	Con `U` y `W` subespacios de `V \; / \; V = U + W` y `U \cap W = \lbrace 0 \rbrace`
+	
+	Todo vector de `V` tiene una **única** representación de la forma `u + w` con
+	`u \in U` y `w \in W`.
+	
+	En este caso se dice que es una **suma directa** y se representa como `U \bigoplus W`
+	
+	.. admonition:: Demostración
+		
+		.. math::
+			
+			\begin{matrix}
+				V = U + W \\
+				\\
+				\underbrace{
+					\begin{array}{l}
+						\left.
+							\begin{array}{ll}
+								v \in V = U + W & \exists u \in U \\
+												& \exists w \in W
+							\end{array}
+						\middle/
+							v = u + w
+						\right\} \\
+						\left.
+							\begin{array}{ll}
+								\text{Si además}			& \exists u' \in U \\
+								\hphantom{v \in V = U + W}	& \exists w' \in W
+							\end{array}
+						\middle/
+							v = u' + w'
+						\right\}
+					\end{array}
+				} \\
+				\Downarrow \\
+				u + w = u' + w' \Leftrightarrow
+					-u' + u + w = w' \Leftrightarrow
+					\underbrace{ -u' + u }_{ u^{\color{blue} 1} } =
+					\underbrace{ w' - w }_{ w^{\color{blue} 2} }
+					\in \underbrace{ U \cap W }_{ \lbrace 0 \rbrace }
+			\end{matrix} \\
+			\color{blue} 1 \mapsto U \text{ es un subespacio} \\
+			\color{blue} 2 \mapsto W \text{ es un subespacio}
+
+Independencia lineal
+$$$$$$$$$$$$$$$$$$$$
+
+.. admonition:: Definición
+	
+	Un subconjunto no vacío `S` de `V` es linealmente independiente si
+	
+	.. math::
+		
+		\begin{matrix}
+			\underbrace{
+				\alpha_1 v_1 + \cdots + \alpha_n v_n = 0
+				\quad \alpha_i \in \mathbb K, v_i \in S \quad \forall i = 1, \cdots, n
+			} \\
+			\Downarrow \\
+			\overbrace{
+				\alpha_i = 0 \quad \forall i = 1, \cdots, n
+			}
+		\end{matrix}
+	
+	En caso contrario se dirá que `S` es un subconjunto de `V`
+	linealmente dependiente.
+
+.. admonition:: Ejemplo
+	
+	.. math::
+		
+		\begin{matrix}
+			V = \mathbb R^4 \\
+			\\
+			S = \langle (1, 1, 1, 1), (0, 1, 1, 1), (0, 0, 1, 1) \rangle
+				\text{ es linealmente independiente ya que} \\
+			\\
+			x(1, 1, 1, 1) + y(0, 1, 1, 1) + z(0, 0, 1, 1) = (0, 0, 0, 0) \\
+			\Updownarrow \\
+			(x, x + y, x + y + z, x + y + z) = (0, 0, 0, 0) \\
+			\Updownarrow \\
+			\left.
+			\begin{array}{r}
+				x = 0 \\
+				x + y = 0 \\
+				x + y + z = 0 \\
+				x + y + z = 0
+			\end{array}
+			\right\} \Rightarrow
+			\begin{array}{l}
+				x = 0 \\
+				y = 0 \\
+				z = 0
+			\end{array}
+		\end{matrix}
+
+.. admonition:: Ejemplo
+	
+	.. math::
+		
+		\begin{matrix}
+			V = \mathbb R^3 \\
+			\\
+			S = \langle (1, 1, 1), (0, 0, 1), (1, 1, 2) \rangle
+				\text{ es linealmente dependiente ya que} \\
+			\\
+			(1, 1, 1) + (0, 0, 1) - (1, 1, 2) = (0, 0, 0)
+		\end{matrix}
+
+.. admonition:: Observaciones
+	
+	Con `V` espacio vectorial
+	
+	#)	.. math::
+			
+			\begin{matrix}
+				S = \left\{ u \right\} \subset V \\
+				\\
+				S \text{ linealmente independiente } \Leftrightarrow u \neq 0
+			\end{matrix}
+		
+		.. admonition:: Demostración
+			
+			.. math::
+				
+				\alpha u = 0 \Leftrightarrow \alpha = 0 \vee u = 0
+	
+	#)	.. math::
+			
+			0 \in S \subset V \Rightarrow S \text{ es linealmente dependiente.}
+		
+		.. admonition:: Demostración
+			
+			.. math::
+				
+				\begin{array}{r}
+					1 \cdot 0 = 0 \\
+					0 \in S \\
+					0 \neq 1 \in \mathbb K
+				\end{array}
+	
+	#)	.. math::
+			
+			\begin{matrix}
+				S = \left\{ u, v \right\} \subset V \\
+				\\
+				S \text{ es linealmente dependiente} \\
+				\Updownarrow \\
+				\exists \alpha \in \mathbb K \; / \; u = \alpha v \vee
+				\exists \beta \in \mathbb K \; / \; v = \beta u
+			\end{matrix}
+		
+		.. admonition:: Desmostración
+			
+			.. math::
+				
+				\begin{matrix}
+					S \text{ linealmente dependiente} \\
+					\Downarrow \\
+					\exists \alpha, \beta \in \mathbb K \; / \;
+						(\alpha \neq 0 \vee \beta \neq 0) \wedge \alpha u + \beta v = 0 \\
+					\Downarrow \\
+					\text{Si } \alpha \neq 0 \quad u + \alpha^{-1} \beta v = 0 \Rightarrow
+						u = -\alpha^{-1} \beta v \quad \text{ es decir, } \alpha \text{ es múltiplo de } \beta
+				\end{matrix}
+	
+	#)	.. math::
+			
+			\begin{matrix}
+				\emptyset \neq S_1 \subset S_2 \subset V \\
+				\\
+				S_2 \text{ linealmente independiente} \Rightarrow S_1 \text{ linealmente independiente} \\
+				S_1 \text{ linealmente dependiente} \Rightarrow S_2 \text{ linealmente dependiente}
+			\end{matrix}
+		
+		.. admonition:: Demostración
+			
+			.. math::
+				
+				\begin{matrix}
+					\alpha_i v_i + \cdots + \alpha_n v_n = 0 \\
+					\\
+					\underbrace{
+						\left.
+						\begin{array}{rr}
+							\alpha_i \in \mathbb K & \forall i = 1, \cdots, n \\
+							v_i \in S_1 \subset S_2
+						\end{array}
+						\right\}
+					} \\
+					\hphantom{\; \xleftarrow[]{S_2 \text{ es linealmente independiente}}}
+						\Downarrow \; \xleftarrow[]{S_2 \text{ es linealmente independiente}} \\
+					\alpha_i = 0 \quad \forall i = 1, \cdots, n
+				\end{matrix}
+
+.. admonition:: Proposición
+	
+	Con `V \; \mathbb K`-espacio vectorial y `\emptyset \neq S \subset V` linealmente independiente
+	
+	.. math::
+		
+		v \notin \langle S \rangle \Leftrightarrow S \cup \left\{ v \right\} \text{ linealmente independiente}
+	
+	.. admonition:: Demostración
+		
+		.. math::
+			
+			\begin{array}{lc}
+				"\Rightarrow"	& \\
+								&	\begin{array}{r}
+										\alpha v + \alpha_1 v_1 + \cdots + \alpha_n v_n = 0 \\
+										\alpha, \alpha_1, \cdots, \alpha_n \in \mathbb K \\
+										v_1, \cdots, v_n \in S \\
+										v \in S \cup \left\{ v \right\}
+									\end{array} \\
+				\quad \text{Si } \alpha \neq 0 & \\
+								& v = -\alpha^{-1} \alpha_1 v_1 \cdots -\alpha^{-1} \alpha_n v_n \in \langle S \rangle
+									\; \left[ \text{Contradicción} \right] \\
+				\quad \text{Luego } \alpha = 0 & \\
+								& \underbrace{
+									\begin{array}{l}
+										\alpha_1 v_1 + \cdots + \alpha_n v_n = 0 \Rightarrow
+											\alpha_i = 0 \quad \forall i = 1, \cdots, n \\
+										\alpha_1, \cdots, \alpha_n \in \mathbb K \\
+										v_1, \cdots, v_n \in S
+									\end{array}
+								} \\
+								& \Downarrow \\
+								& S \cup \left\{ v \right\} \text{ linealmente independiente} \\
+				"\Leftarrow"	& \\
+								& v \in \langle S \rangle \Rightarrow S \cup \left\{ v \right\} \text{ linealmente dependiente} \\
+								\\
+								&	\begin{array}{r}
+										v \in \langle S \rangle \Rightarrow \exists v_i, \cdots, v_n \in S \\
+										\alpha_i, \cdots, \alpha_n \in \mathbb K
+									\end{array} \\
+								& v = \alpha_1 v_1 + \cdots + \alpha_n v_n \\
+								& \Downarrow \\
+								& -v + \alpha_1 v_1 + \cdots + \alpha_n v_n = 0 \\
+								& \Downarrow \\
+								& S \cup \left\{ v \right\} \text{ linealmente dependiente}
+			\end{array}
+	
+	.. admonition:: Ejemplo
+		
+		.. math::
+			
+			\begin{matrix}
+				\lbrace (1, 1, 1), (0, 1, 1) \rbrace = S \subset \mathbb R^3
+					\quad v = (2, 5, 7) \\
+				\\
+				v \notin \langle S \rangle \text{ ya que} \\
+				\\
+				(2, 5, 7) = \alpha(1, 1, 1) + \beta(0, 1, 1) = (\alpha, \alpha + \beta, \alpha + \beta) \\
+				\Updownarrow \\
+				\underbrace{\overbrace{
+					\left.
+					\begin{array}{r}
+						\alpha = 2 \\
+						\alpha + \beta = 5 \\
+						\alpha + \beta = 7
+					\end{array}
+					\right\} \text{ Sistema Incompatible }
+				}} \\
+				\Downarrow \\
+				(2, 5, 7) \notin \langle S \rangle
+			\end{matrix}
+
+Base de un subespacio vectorial
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+Con `V \neq \lbrace 0 \rbrace \; \mathbb K`-espacio vectorial.
+
+.. admonition:: Definición
+	
+	Un subconjunto ordenado `B` de `V` es una **base** si
+	
+	#)	`B` es un conjunto de generadores de `V` —i.e. `\langle B \rangle = V`.
+	
+	#)	`B` es linealmente independiente.
+	
+	.. admonition:: Ejemplo
+		
+		En `\mathbb R^3`
+		
+		.. math::
+			
+			\begin{array}{l}
+				\mathcal C = \lbrace (1, 0, 0), (0, 1, 0), (0, 0, 1) \rbrace \subset \mathbb R^3 \\
+				\text{es una base que llamamos base canónica.} \\
+				\\
+				B = \lbrace (1, 1, 1), (0, 1, 1), (0, 0, 1) \rbrace \subset \mathbb R^3 \\
+				\text{es otra base de } \mathbb R^3
+			\end{array}
+	
+	
+	.. admonition:: Ejemplo
+		
+		En `\mathbb R^4`
+		
+		.. math::
+			
+			\begin{matrix}
+				\mathcal C = \lbrace (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) \rbrace \\
+				\\
+				\mathcal C \text{ es la base canónica de } \mathbb R^4 \\
+				\\
+				(a_1, a_2, a_3, a_4) \in \mathbb R^4 \\
+				\\
+				\underbrace{ (0, 0, 0, 0) = a_1(1, 0, 0, 0) + a_2(0, 1, 0, 0) + a_3(0, 0, 1, 0) + a_4(0, 0, 0, 1) } \\
+				\Downarrow \\
+				a_i = 0 \quad \forall i = 1, 2, 3, 4
+			\end{matrix}
+	
+	.. admonition:: Ejemplo
+		
+		.. math::
+			
+			\begin{matrix}
+				\mathbb R[x] = 	\left\{
+									a_0 + a_1 x + \cdots + a_n x^n \middle/
+									\begin{array}{r}
+										n \in \mathbb N \\
+										a_i \in \mathbb R \\
+										i = 0, \cdots, n
+									\end{array}
+								\right\} \\
+				\\
+				B = \lbrace 1 = x^0, x, x^2, \cdots, x^n, \cdots \rbrace =
+				\left\{ x^i \middle/ i \geq 0 \right\}
+			\end{matrix}
+		
+		.. note::
+			
+			Hay espacios vectoriales que tienen bases infinitas.
+
+.. admonition:: Proposición
+	
+	Con `\emptyset \neq B \subset V`, son equivalentes
+	
+	#)	`B` base de `V`.
+	
+	#)	Cualquier vector de `V` se expresa como combinación lineal de
+		elementos de `B` de modo único.
+	
+	.. admonition:: Demostración
+		
+		.. math::
+			
+			\begin{matrix}
+				(1) \Rightarrow (2) & \\
+									& B \text{ base } \\
+									& \Downarrow \\
+									& \langle B \rangle = V \\
+									& \Updownarrow \\
+									& \text{Cada vector de } V
+										\text{ es combinación lineal de elementos de } B
+										\text{, es decir} \\
+									\\
+									& \underbrace{
+										\text{si }
+											\left.
+												v \in V
+												\middle/
+												\begin{array}{lr}
+													& v_i \in B \\
+													v = \alpha_1 v_1 + \cdots + \alpha_n v_n &
+														\alpha_i \in \mathbb K \\
+													v = \beta_1 v_1 + \cdots + \beta_n v_n &
+														\beta_i \in \mathbb K \\
+													& \forall i = 1, \cdots, n
+												\end{array}
+											\right.
+									} \\
+									& \Downarrow \\
+									& 0 = \alpha_1 v_1 + \cdots + \alpha_n v_n -
+										\beta_1 v_1 - \cdots - \beta_n v_n =
+										(\alpha_1 - \beta_1) v_1 + \cdots + (\alpha_n - \beta_n) v_n \\
+									& \Downarrow \\
+									& 	\begin{array}{r}
+											\alpha_i \beta_i = 0 \Leftrightarrow \alpha_i = \beta_i \\
+											\forall i = 1, \cdots, n
+										\end{array} \\
+				(2) \Rightarrow (1) & \\
+									& \text{Cada } v \in V \text{ es combinación lineal de elementos de } B \\
+									& \Updownarrow \\
+									& \langle B \rangle = V \; (B \text{ genera } V) \\
+									\\
+									&	\left.
+										\begin{array}{r}
+											\text{Sea } \alpha_1 v_1 + \cdots + \alpha_n v_n = 0 =
+												0v_1 + \cdots + 0v_n \\
+											\alpha_i \in \mathbb K \\
+											v_i \in B
+										\end{array}
+										\right\}
+									\overset{ \text{De modo único} }{ \Rightarrow }
+									\alpha_i = 0 \quad \forall i = 1, \cdots, n
+			\end{matrix}
+
+.. admonition:: Definición
+	
+	Con `V \; \mathbb K`-espacio vectorial y `B = \lbrace v_1, \cdots, v_n \rbrace` base de `V`,
+	si `v \in V` y `v = \alpha_1 v_1 + \cdots + \alpha_n v_n`, al elemento
+	`(\alpha_1, \cdots, \alpha_n) \in \mathbb K^n` se le llama **coordenadas** de `v` en la base `B`.
+	
+	.. admonition:: Ejemplo
+		
+		.. math::
+			
+			\begin{array}{l}
+				V = \mathbb R^3 \\
+				\\
+				\mathcal C = \lbrace (1, 0, 0), (0, 1, 0), (0, 0, 1) \rbrace
+					\text{ es base de } \mathbb R^3 \\
+				B = \lbrace (1, 1, 1), (0, 1, 1), (0, 0, 1) \rbrace
+					\text{ es base de } \mathbb R^3 \\
+				\\
+				v = (3, 5, 6) = 3(1, 1, 1) + 2(0, 1, 1) + (0, 0, 1) =
+								3(1, 0, 0) + 5(0, 1, 0) + 6(0, 0, 1) \\
+				v = (3, 2, 1)_B = (3, 5, 6)_{\mathcal C}
+			\end{array}
+
+.. admonition:: Definición
+	
+	Un espacio vectorial es **finitamente generado** cuando tiene un conjunto
+	de generadores finito.
+
+.. admonition:: Proposición
+	
+	`V` es un `\mathbb K`-espacio vectorial finitamente generado por `S`,
+	es decir
+	
+	.. math::
+		
+		\exists S \text{ finito } \; / \; V = \langle S \rangle
+	
+	Entonces, existe un subconjunto `B` de `S` que es base de `V`.
+	
+	.. note::
+		
+		.. math::
+			
+			v \in \langle S \rangle \Leftrightarrow
+			\langle S \rangle = \langle S \setminus \lbrace v \rbrace \rangle
+	
+	.. admonition:: Demostración
+		
+		.. math::
+			
+			\begin{array}{l}
+				V \neq \lbrace 0 \rbrace \Rightarrow
+					\text{ número de elementos no nulos de } S \text{ es } \geq 1 \\
+				\\
+				\text{Con } \langle S \rangle = V \text{, }
+				\left\{
+				\begin{array}{l}
+					-\; S \text{ linealmente independiente } \Rightarrow B = S \\
+					-\; \underbrace{
+						S \text{ linealmente dependiente } \Rightarrow
+							\exists v \in S \; / \; v \in \langle S \setminus \lbrace v \rbrace \rangle
+					} \\
+					\hphantom{-\; S \text{ linealmente dependiente} } \Downarrow \\
+					\hphantom{-\; S \text{ linealmente depen} }
+						\langle S \rangle = \langle S \setminus \lbrace v \rbrace \rangle \\
+					\overbrace{
+						\left\{
+						\begin{array}{l}
+							-\; \langle S \setminus \lbrace v \rbrace \rangle \text{ linealmente independiente }
+								\wedge B = \langle S \setminus \lbrace v \rbrace \rangle \\
+							-\; \langle S \setminus \lbrace v \rbrace \rangle \text{ linealmente dependiente }
+								\text{y esto continuaría } \\
+							\hphantom{-\;} \text{recursivamente hasta que }
+								\langle S \setminus \lbrace v \rbrace \rangle
+								\text{ sea linealmente} \\
+							\hphantom{-\;} \text{independiente.}
+						\end{array}
+						\right.
+					}
+				\end{array}
+				\right.
+			\end{array}
+	
+	.. admonition:: Ejemplo
+		
+		.. math::
+			
+			\begin{matrix}
+				V = \langle
+						\underbrace{(1, 1, 1, 1)}_{v_1},
+						\underbrace{(2, 2, 1, 1)}_{v_2 = v_1 + v_3},
+						\underbrace{(1, 1, 0, 0)}_{v_3},
+						\underbrace{(0, 0, 1, 0)}_{v_4},
+						\underbrace{(1, 1, 1, 0)}_{v_5}
+					\rangle \\
+				\Downarrow \\
+				V = \langle
+						(1, 1, 1, 1), (1, 1, 0, 0), (0, 0, 1, 0),
+						\underbrace{(1, 1, 1, 0)}_{v_5 = v_3 + v_4}
+					\rangle \\
+				\Downarrow \\
+				V = \langle
+						(1, 1, 1, 1), (1, 1, 0, 0), (0, 0, 1, 0)
+					\rangle \\
+				\\
+				B = \lbrace v_1, v_3, v_4 \rbrace \subset S = \lbrace v_1, v_2, v_3, v_4, v_5 \rbrace
+			\end{matrix}
+	
+
+.. admonition:: Corolario
+	
+	Todo conjunto de generadores contiene a una base.
+
+.. admonition:: Proposición
+	
+	Sea `V` un `\mathbb K`-espacio vectorial y `B = \lbrace v_1, \cdots, v_n \rbrace`
+	base de `V`.
+	
+	Cualquier subconjunto de `V` con más de `n` elementos es linealmente dependiente.
+	
+	.. admonition:: Demostración
+		
+		.. math::
+			
+			\begin{matrix}
+				S = \lbrace u_1, \cdots, u_m \rbrace \subset V \quad m > n \\
+				u_j = a_{1j} v_1 + a_{2j} v_2 + \cdots + a_{nj} v_n \quad \forall j = 1, \cdots, m \\
+				\\
+				\text{Sea } 0 = \alpha_1 u_1 + \cdots + \alpha_m u_m \\
+				0 = \alpha_1 (a_{11} v_1 + \cdots + a_{n1} v_n) + \cdots +
+					\alpha_n (a_{1m} v_1 + \cdots + a_{nm} v_n) \\
+				0 = (\alpha_1 a_{11} + \cdots + \alpha_m a_{1m}) v_1 + \cdots +
+					(\alpha_1 a_{n1} + \cdots + \alpha_m a_{nm}) v_n \\
+				\Downarrow \; \xleftarrow[]{B \text{ es base}} \\
+				\overbrace{
+					\underbrace{
+						\left.
+						\begin{array}{r}
+							\alpha_1 a_{11} + \cdots + \alpha_m a_{1m} = v \\
+							\vdots \\
+							\alpha_1 a_{n1} + \cdots + \alpha_m a_{nm} = 0
+						\end{array}
+						\right\}
+						\begin{array}{l}
+							\text{ Es un sistema homogéneo con } m \\
+							\text{ incógnitas y } n \text{ ecuaciones con } m > n
+						\end{array}
+					}
+				} \\
+				\Downarrow \\
+				\text{Sistema Compatible Indeterminado} \\
+				\Downarrow \\
+				\text{Existen soluciones no triviales}
+			\end{matrix}
+
+.. admonition:: Teorema
+	
+	Si `V` es `\mathbb K`-espacio vectorial tal que `V \neq \lbrace 0 \rbrace`
+	entonces `V` tiene una base.
+	
+	.. admonition:: Demostración
+		
+		.. math::
+			
+			\begin{array}{l}
+				V \neq \lbrace 0 \rbrace \Rightarrow
+					\text{Cualquier conjunto de generadores de } V
+					\text{ tiene al menos un vector no nulo} \\
+				\\
+				\text{Con } \langle S \rangle = V
+				\left\{
+					\begin{array}{l}
+						-\; \text{Si } S \text{ es linealmente independiente }
+							\Rightarrow B = S \; (S \text{ es base de } V) \\
+						-\; \underbrace{
+							\text{Si } S \text{ es linealmente dependiente}
+						} \\
+						\hphantom{ -\; \text{Si }  S \text{ es linealm} } \Downarrow \\
+						\hphantom{-\;} \exists v_1 \in S \text{ que es combinación lineal de los restantes,} \\
+						\hphantom{-\;} v_1 \in \langle S \setminus \lbrace v_1 \rbrace \rangle \text{ y} \\
+						\hphantom{-\;} V = \langle S \rangle = \langle S \setminus \lbrace v_1 \rbrace \rangle
+						\left\{
+						\begin{array}{l}
+							-\; S \setminus \lbrace v_1 \rbrace \text{ linealmente independiente }
+								\Rightarrow S \setminus \lbrace v_1 \rbrace \text{ base de } V \\
+							-\; S \setminus \lbrace v_1 \rbrace \text{ linealmente dependiente }
+								\Rightarrow \exists v_2 \in S \setminus \lbrace v_1 \rbrace
+								\text{ que es } \\
+							\hphantom{-\;} \text{combinación lineal de los restantes.} \\
+							\hphantom{-\;} \text{Y el proceso recursivo termina como muy tarde al quedar un elemento.}
+						\end{array}
+						\right.
+					\end{array}
+				\right.
+			\end{array}
+
+.. admonition:: Teorema
+	
+	Sea `V` un `\mathbb K`-espacio vectorial con una base
+	`B = \lbrace v_1, \cdots, v_n \rbrace` con `n` vectores.
+	
+	Si `B'` es otra base de `V` entonces `B'` tiene también
+	`n` vectores.
+	
+	.. admonition:: Demostración
+		
+		Cualquier subconjunto de `B'` linealmente independiente tiene
+		a lo sumo `n` vectores —`B'` es un conjunto finito.
+		
+		.. math::
+			
+			\begin{array}{lr}
+				\text{Sea } B' = \lbrace u_1, \cdots, u_s \rbrace \\
+				&	\left.
+					\begin{array}{r}
+						B = \lbrace v_1, \cdots, v_n \rbrace \text{ es base} \\
+						B' = \lbrace u_1, \cdots, u_s \rbrace \text{ es linealmente independiente}
+					\end{array}
+					\right\} \Rightarrow s \leq n \\
+				&	\left.
+					\begin{array}{r}
+						B = \lbrace v_1, \cdots, v_n \rbrace \text{ es linealmente independiente} \\
+						B' = \lbrace u_1, \cdots, u_s \rbrace \text{ es base}
+					\end{array}
+					\right\} \Rightarrow s \geq n \\
+				\text{Luego } s = n
+			\end{array}
+
+Dimensión de un subespacio
+$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+.. admonition:: Definición
+	
+	Con `V \; \mathbb K`-espacio vectorial finitamente generado y `V \neq \lbrace 0 \rbrace`
+	
+	Se define **dimensión** de `V` como el número de elementos de
+	cualquier base de `V` y se denota por `\dim_{\mathbb K} V = \dim V`.
+	
+	.. note:: Por convenio, `\dim \lbrace 0 \rbrace := 0`
+	
+	.. admonition:: Ejemplo
+		
+		.. math::
+			
+			\begin{array}{l}
+				\lbrace (1, 0), (0, 1) \rbrace \text{ base de } \mathbb R^2 \\
+				\dim \mathbb R^2 = 2 \\
+				\dim \mathbb R^n = n
+			\end{array}
+	
+	.. admonition:: Ejemplo
+		
+		.. math::
+			
+			\begin{array}{l}
+				\lbrace 1 \rbrace \text{ base de } \mathbb K \\
+				\dim \mathbb K = 1
+			\end{array}
+	
+	.. admonition:: Ejemplo
+		
+		.. math::
+			
+			\begin{array}{l}
+				\mathcal M_{m \times n}(\mathbb K) =
+					\left\{
+					\begin{pmatrix}
+						1		& 0			& \cdots 	& 0			\\
+						0		& 0			& \cdots 	& 0			\\
+						\vdots	& \vdots 	& 			& \vdots	\\
+						0		& 0			& \cdots 	& 0
+					\end{pmatrix},
+					\begin{pmatrix}
+						0		& 1			& \cdots 	& 0			\\
+						0		& 0			& \cdots 	& 0			\\
+						\vdots	& \vdots 	& 			& \vdots	\\
+						0		& 0			& \cdots 	& 0
+					\end{pmatrix},
+					\cdots
+					\right\} \\
+				\\
+				E_{ij} = (e_{ks}) =
+					\left\{
+					\begin{array}{lll}
+						e_{ks} = 1 & \quad & \text{si } k = i \wedge s = j \\
+						e_{ks} = 0 & \quad & \text{en cualquier otro caso}
+					\end{array}
+					\right. \\
+				\\
+				\left\{
+				E_{ij}
+				\middle/
+				\begin{array}{l}
+					i = 1, \cdots, m \\
+					j = 1, \cdots, n
+				\end{array}
+				\right\} \subset \mathcal M_{m \times n}(\mathbb K) \\
+				\\
+				\dim \mathcal M_{m \times n}(\mathbb K) = mn
+			\end{array}
+	
+.. admonition:: Proposición
+	
+	Con `V \; \mathbb K`-espacio vectorial y `\dim V = n \neq 0` se verifica
+	
+	#)	Cualquier subconjunto de `V` linealmente independiente y con `n`
+		vectores es una base de `V`.
+	
+	#)	Cualquier conjunto generador de `V` con `n` vectores es una base.
+	
+	.. admonition:: Demostración
+		
+		#)	.. math::
+				
+				\begin{array}{l}
+					\text{Sea } S = \lbrace u_1, \cdots, u_n \rbrace \text{ linealmente independiente} \\
+					\\
+					\left\{
+					\begin{array}{l}
+						-\; \langle S \rangle = V \Rightarrow S \text{ es base de } V \\
+						-\; \langle S \rangle \subsetneq V \Rightarrow
+							\underbrace{
+								\exists v \in V \; / \; v \notin \langle S \rangle
+							} \\
+							\hphantom{ -\; \langle S \rangle \subsetneq V \Rightarrow \exists v \in V }
+								\Downarrow \\
+							\hphantom{-\;} S \cup \lbrace v \rbrace = \lbrace u_1, \cdots, u_n, v \rbrace
+							\text{ es linealmente independiente,} \\
+							\hphantom{-\;} \text{lo cual es una contradicción, ya que } n + 1 > n
+					\end{array}
+					\right.
+				\end{array}
+		
+		#)	.. math::
+				
+				\begin{matrix}
+					S = \lbrace u_1, \cdots, u_n \rbrace \; / \; \langle S \rangle = V \\
+					\Downarrow \\
+					\exists B \subseteq S \; / \; B \text{ es base de } V \\
+					\Downarrow \\
+					B \text{ es una base con a lo sumo } n \text{ elementos y }
+						\dim V = n \\
+					\Downarrow \\
+					B = S
+				\end{matrix}
+	
+	.. admonition:: Ejemplo
+		
+		.. math::
+			
+			\begin{matrix}
+				U \subset \mathbb R^4 \\
+				\\
+				\dim U = 4 \\
+				\Downarrow \\
+				\exists B = \lbrace u_1, u_2, u_3, u_4 \rbrace \text{ base de } U \\
+				\Downarrow \\
+				B \subset \mathbb R^4 \text{ es linealmente independiente} \\
+				\hphantom{ B \subset \mathbb R^4 \text{ e} } \Downarrow \; \xleftarrow[]{\dim \mathbb R^4 = 4} \\
+				U = \mathbb R^4
+			\end{matrix}
+
+.. admonition:: Proposición
+	
+	Con `V \; \mathbb K`-espacio vectorial, `\dim V \neq 0` y
+	`B = \lbrace v_1, \cdots, v_n \rbrace` base de `V`
+	
+	Si `S = \lbrace u_1, \cdots, u_s \rbrace` es un subconjunto de `V`
+	linealmente independiente, `\exists v_{i_1}, \cdots, v_{i_{n - s}} \in B`
+	tales que `S \cup \lbrace v_{i_1}, \cdots, v_{i_{n - s}} \rbrace` es base de `V`.
+	
+	.. admonition:: Demostración
+		
+		.. math::
+			
+			\begin{array}{l}
+				S = \lbrace v_1, \cdots, v_s \rbrace \subset V \text{ linealmente independiente} \\
+				\hphantom{ S = \lbrace v_1, \cdots, v_s \rbrace \subset } \Downarrow \; \xleftarrow[]{\dim V = n} \\
+				\\
+				s \leq n
+					\left\{
+					\begin{array}{l}
+						\,-\; s = n \Rightarrow S \text{ es base de } V \\
+						\underbrace{
+							\begin{array}{l}
+								-\; \text{Si } s < n, \langle u_1, \cdots, u_s \rangle \subsetneq V =
+								\langle v_1, \cdots, v_n \rangle \text{ ya que si } \\
+								\hphantom{-\;}
+								\langle u_1, \cdots, u_s \rangle = \langle v_1, \cdots, v_n \rangle = V \text{, }
+								V \text{ tendría una base con } s \text{ elementos y } \\
+								\hphantom{-\;}
+								 s < n \text{, lo cual es una contradicción.}
+							\end{array}
+							} \\
+							\hphantom{-\; s < n \text{ lo cual es una contradicción.} } \Downarrow \\
+							\hphantom{-\;} \exists v_{i_1} \in \lbrace v_1, \cdots, v_n \rbrace \; / \;
+								v_{i_1} \notin \langle u_1, \cdots, u_s \rangle \\
+							\hphantom{-\; s < n \text{ lo cual es una contradicción.} } \Downarrow \\
+							\hphantom{-\;} \lbrace u_1, \cdots, u_s, v_{i_1} \rbrace \text{ linealmente independiente} \\
+							\hphantom{-\;} \text{Repitiendo el proceso recursivamente } n - s \\
+							\hphantom{-\;} \text{veces se obtiene una base de } V
+					\end{array}
+					\right.
+			\end{array}
+
+.. admonition:: Proposición
+	
+	Con `V \; \mathbb K`-espacio vectorial de dimensión finita y `U` un
+	**subespacio** de `V`
+	
+	#)	`\dim U \leq \dim V`
+	
+	#)	`\dim U = \dim V \Leftrightarrow U = V`
+	
+	.. admonition:: Demostración
+		
+		Con `\dim V = n`
+		
+		.. math::
+			
+			\begin{matrix}
+				(1) & \\
+					& \text{Todo subconjunto de } V \\
+					& \text{linealmente independiente tiene a lo sumo} \\
+					& n \text{ elementos} \\
+					& \Downarrow \\
+					& \text{Cualquier subconjunto de } U \\
+					& \text{linealmente independiente es un subconjunto de} \\
+					& V \text{ linealmente independiente y por tanto tiene a lo sumo} \\
+					& n \text{ elementos} \\
+					& \Downarrow \\
+					& \dim U \leq \dim V \\
+				(2) & \\
+				"\Leftarrow" \\
+					& \text{Trivial} \\
+				"\Rightarrow" \\
+					& \underbrace{
+							\left.
+							\begin{array}{l}
+								U \subset V \\
+								\dim U = \dim V = n
+							\end{array}
+							\right\}
+							\text{ Si } \lbrace u_1, \cdots, u_n \rbrace
+							\text{ es una base de } U
+						} \\
+					& \Downarrow \\
+					& \lbrace u_1, \cdots, u_n \rbrace \text{ es un subconjunto de } V
+						\text{ linealmente independiente con } n \text{ elementos} \\
+					& \hphantom{ \text{linealmen} } \Downarrow \; \xleftarrow[]{\dim V = n} \\
+					& \lbrace u_1, \cdots, u_n \rbrace \text{ base de } V \text{ y }
+						\langle u_1, \cdots, u_n \rangle = U = V
+			\end{matrix}
+	
+	.. admonition:: Ejemplo
+		
+		.. math::
+			
+			\begin{matrix}
+				\left.
+				\begin{array}{l}
+					U \subset \mathbb R^3 \\
+					\dim U = 3
+				\end{array}
+				\right\} \Rightarrow U = \mathbb R^3
+			\end{matrix}
+
+Fórmula de Grassman
+%%%%%%%%%%%%%%%%%%%
+
+Con `U, W` subespacios de `V` y `\dim V = n`
+
+.. math::
+	
+	\dim U + \dim W = \dim (U \cap W) + \dim (U + W)
+
+.. admonition:: Demostración
+	
+	.. math::
+		
+		\begin{matrix}
+			\dim U = s \leq n \text{ y sea } B_U =
+				\lbrace u_1, \cdots, u_s \rbrace \text{ base de } U \\
+			\dim W = t \leq n \text{ y sea } B_W =
+				\lbrace w_1, \cdots, w_t \rbrace \text{ base de } W \\
+			\\
+			\begin{array}{r}
+				U \cap W \subset U \Rightarrow \dim (U \cap W) = r \leq s \quad (1) \\
+				U \cap W \subset W \Rightarrow \dim (U \cap W) = r \leq t \quad (2) \\
+				B_{U \cap W} = \lbrace v_1, \cdots, v_r \rbrace \text{ base de } U \cap W \quad (3) \\
+				\\
+				(1) \wedge (3) \Rightarrow \exists u_{i_1} \cdots u_{i_{s - r}}
+					\in B_U \; / \; \lbrace v_1, \cdots, v_r, u_{i_1}, \cdots, u_{i_{s - r}} \rbrace
+					\text{ es base de } U \quad (4) \\
+				(2) \wedge (3) \Rightarrow \exists w_{j_1} \cdots w_{j_{t - r}}
+					\in B_W \; / \; \lbrace v_1, \cdots, v_r, w_{j_1}, \cdots, w_{j_{t - r}} \rbrace
+					\text{ es base de } W \quad (5) \\
+			\end{array} \\
+			\\
+			(4) \wedge (5) \Rightarrow U + W =
+				\langle v_1, \cdots, v_r, u_{i_1}, \cdots, u_{i_{s - r}}, w_{j_1}, \cdots, w_{j_{t - r}} \rangle \\
+			\text{y } \lbrace v_1, \cdots, v_r, u_{i_1}, \cdots, u_{i_{s - r}}, w_{j_1}, \cdots, w_{j_{t - r}} \rbrace
+				\text{ linealmente independiente } \color{red}{\text{(Falta probarlo)}} \\
+			\Downarrow \\
+			\dim (U + W) = s + t - r = \dim U + \dim W - \dim (U \cap W)
+		\end{matrix}
+
+.. admonition:: Ejemplo
+	
+	Con `U, W \subset \mathbb R^4` subespacios
+	
+	.. math::
+		
+		\left.
+		\begin{array}{l}
+			\dim U = 3 \\
+			\dim W = 1 \\
+			\dim (U \cap W) = 0
+		\end{array}
+		\right\} \Rightarrow \dim (U + W) = 4 \Rightarrow U + W = \mathbb R^4
+
+Matrices, sistemas de ecuaciones lineales y subespacios
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+.. admonition:: Definición
+	
+	Con `A \in \mathcal M_{m \times n}(\mathbb K)`
+	
+	Se define el **rango por columnas** de `A`
+	
+	.. math::
+		
+		r_c(A) := \dim \langle C_1(A), \cdots, C_n(A) \rangle = \dim \mathcal C(A)
+
+.. admonition:: Definición
+	
+	Con `A, B \in \mathcal M_{m \times n}(\mathbb K)`
+	
+	`A` es equivalente por columnas a `B` —`A \sim_c B`— si haciendo una
+	sucesión finita de operaciones elementales en columnas se pasa de
+	`A` a `B`.
+
+.. admonition:: Teorema
+	
+	.. math::
+		
+		r_c(A) = r_f(A)
+
+.. admonition:: Definición
+	
+	Con `A \in \mathcal M_{m \times n}(\mathbb K)`
+	
+	.. math::
+		
+		\operatorname{rango} A := \dim \mathcal F(A) = r_f(A) = r_c(A) =
+			\dim \mathcal C(A) = r(A)
+
+.. admonition:: Proposición
+	
+	Si `A` y `B` son matrices `m \times n` sobre `\mathbb K`
+	equivalentes por filas, las columnas de `A` y las columnas
+	de `B` verifican las mismas relaciones de dependencia.
+	
+	.. admonition:: Demostración
+		
+		.. math::
+			
+			\begin{array}{rcl}
+				A \sim_f B & \Rightarrow &	\text{Los sistemas }
+											AX = 0 \text{ y } BX = 0 \text{ son equivalentes} \\
+				\\
+				(\alpha_1, \cdots, \alpha_n) \text{ solución de } AX = 0 &
+					\Leftrightarrow & (\alpha_1, \cdots, \alpha_n) \text{ solución de } BX = 0 \\
+				\Updownarrow \hphantom{ \text{ución de } AX = 0 } & &
+					\hphantom{ (\alpha_1, \cdots, \alpha_n) \text{ solu} } \Updownarrow \\
+				C_1(A) \alpha_1 + \cdots + C_n(A) \alpha_n = 0 & &
+					C_1(B) \alpha_1 + \cdots + C_n(B) \alpha_n = 0
+			\end{array}
+
+.. admonition:: Corolario
+	
+	.. math::
+		
+		\begin{matrix}
+			A \sim_f B \text{ escalonada reducida} \\
+			\Downarrow \\
+			r_c(A) = r_c(B) = r_f(B) = r_f(A) = \operatorname{rango}(A) = \operatorname{rango}(B)
+		\end{matrix}
+
+.. admonition:: Corolario
+	
+	Con `A \in \mathcal M_n(\mathbb K)`
+	
+	.. math::
+		
+		\begin{matrix}
+			A \text{ no singular } \Leftrightarrow 	& r(A) = n 	&
+				\Leftrightarrow \dim \mathcal F(A) = n \\
+			\Updownarrow							& 			& \Updownarrow \\
+			|A| \neq 0								&			&
+				\dim \mathcal C(A) = n
+		\end{matrix}
+	
+	.. note:: El rango de `B \in \mathcal M_{m \times n}(\mathbb K)` es el orden del mayor menor no nulo.
+
+.. admonition:: Proposición
+	
+	Con `A \in \mathcal M_n(\mathbb K)`
+	
+	.. math::
+		
+		A \text{ no singular } \Leftrightarrow r(A) = n
+	
+	.. admonition:: Demostración
+		
+		.. math::
+			
+			|A| \neq 0 \Leftrightarrow A \text{ no singular }
+				\Leftrightarrow A \sim_f I_n \Leftrightarrow r(A) = n
+
+Ecuaciones implícitas de un subespacio de `\mathbb K^n`
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+.. admonition:: Observaciones
+	
+	Con `A \in \mathcal M_{m \times n}(\mathbb K)`
+	
+	.. math::
+		
+		\begin{array}{l}
+			\lbrace F_1(A), \cdots, F_m(A) \rbrace \subset \mathbb K^n \\
+			\\
+			\mathcal F(A) = \langle F_1(A), \cdots, F_m(A) \rangle
+				\underset{ \text{subespacio} }{ \subset } \mathbb K^n \\
+			\\
+			r_f(A) = s \Leftrightarrow A \sim_f B \wedge B
+				\text{ escalonada con } s \text{ pivotes } \\
+			\\
+			\mathcal F(A) = \langle F_1(A), \cdots, F_m(A) \rangle =
+				\langle F_1(B), \cdots, F_s(B) \rangle = \mathcal F(B) \\
+			\\
+			r_f(A) = s, \lbrace F_1(B), \cdots, F_s(B) \rbrace
+				\text{ es base de } \mathcal F(A) \\
+			\\
+			r_f(A) = s = \dim \mathcal F(A) \\
+			\\
+			\text{En particular,} \\
+			\left.
+			\begin{array}{r}
+				\text{Si } A \in \mathcal M_{m \times n}(\mathbb K) \\
+				r_f(A) = m
+			\end{array}
+			\right\} \Rightarrow \dim \mathcal F(A) = m
+				\Leftrightarrow \lbrace F_1(A), \cdots, F_m(A) \rbrace
+				\text{ es linealmente independiente}
+		\end{array}
+
+Ecuaciones de `U`
+%%%%%%%%%%%%%%%%%
+
+Con `A = (a_{ij}) \in \mathcal M_{m \times n}(\mathbb K)`
+
+.. math::
+	
+	\begin{matrix}
+		\text{Sea } U =
+		\langle
+			\underbrace{ (a_{11}, \cdots, a_{1n}) }_{F_1(A)},
+			\underbrace{ (a_{21}, \cdots, a_{2n}) }_{F_2(A)},
+			\cdots,
+			\underbrace{ (a_{m1}, \cdots, a_{mn}) }_{F_m(A)}
+		\rangle \underset{ \text{subespacio} }{ \subset } \mathbb K^n \\
+		\\
+		\lbrace F_1(A), \cdots, F_m(A) \rbrace \text{ es base de } U \\
+		\Downarrow \\
+		(x_1, \cdots, x_n) \in U \Leftrightarrow
+			\lbrace (x_1, \cdots, x_n), F_1(A), \cdots, F_m(A) \rbrace
+			\text{ linealmente dependiente} \\
+		\Updownarrow \\
+		r
+		\begin{pmatrix}
+			a_{11}	& \cdots & a_{1n} \\
+			a_{21}	& \cdots & a_{2n} \\
+			\vdots	& \ddots & \vdots \\
+			a_{m1}	& \cdots & a_{mn} \\
+			x_1		& \cdots & x_n
+		\end{pmatrix} = m
+	\end{matrix}
+
+.. admonition:: Ejemplo
+	
+	.. math::
+		
+		\begin{matrix}
+			U = \langle (1, 1, 1, 1), (0, 1, 2, 3), (0, 0, 5, 7) \rangle
+				\subset \mathbb R^4 \\
+			\\
+			(x, y, z, t) \in U \Leftrightarrow r
+				\begin{pmatrix}
+					1 & 1 & 1 & 1 \\
+					0 & 1 & 2 & 3 \\
+					0 & 0 & 5 & 7 \\
+					x & y & z & t
+				\end{pmatrix} = 3 \Leftrightarrow (1) \\
+			\\
+			\begin{pmatrix}
+				1 & 1 & 1 & 1 \\
+				0 & 1 & 2 & 3 \\
+				0 & 0 & 5 & 7 \\
+				x & y & z & t
+			\end{pmatrix} \xrightarrow[ F_4 - xF_1 ]{}
+			\begin{pmatrix}
+				1 & 1		& 1		& 1 \\
+				0 & 1		& 2		& 3 \\
+				0 & 0		& 5		& 7 \\
+				0 & y - x 	& z - x & t - x
+			\end{pmatrix} \rightarrow \cdots \\
+			\\
+			\cdots \xrightarrow[ F_4 - (y - x)F_2 ]{}
+			\begin{pmatrix}
+				1 & 1	& 1				& 1 \\
+				0 & 1	& 2				& 3 \\
+				0 & 0	& 5				& 7 \\
+				0 & 0	& z - 2y + x	& t - 3y + 2x
+			\end{pmatrix} \xrightarrow[ F_4 - \frac{ z - 2y + x }{ 5 } F_3 ]{}
+			\begin{pmatrix}
+				1 & 1 & 1 & 1 \\
+				0 & 1 & 2 & 3 \\
+				0 & 0 & 5 & 7 \\
+				0 & 0 & 0 & t - 3y + 2x - \frac{7}{5}(z - 2y + x)
+			\end{pmatrix}
+			\\
+			\\
+			(1) \\
+			\Updownarrow \\
+			t - 3y + 2x - \frac{7}{5}(z - 2y + x) = 0 \\
+			\Updownarrow \\
+			t - 3y + 2x - \frac{7}{5}z + \frac{14}{5}y - \frac{7}{5}x = 0 \\
+			\Updownarrow \\
+			5t - 15y + 10x - 7z + 14y - 7x = 0 \\
+			\Updownarrow \\
+			3x - y - 7z + 5t = 0 \\
+			\Downarrow \\
+			U = \left\{ (x, y, z, t) \in \mathbb R^4 \middle/ 3x - y - 7z + 5t = 0 \right\}
+		\end{matrix}
