@@ -215,7 +215,7 @@ latex_elements = {
 'preamble': r'\setcounter{tocdepth}{10}', # No parece que tenga efecto...
 'classoptions': ',openany,oneside',
 'babel': '\\usepackage[spanish]{babel}',
-'preamble': '\\usepackage{amssymb}',
+'preamble': '\\usepackage{amssymb} \\usepackage[all]{xy}',
 
 # Latex figure (float) alignment
 #'figure_align': 'htbp',
