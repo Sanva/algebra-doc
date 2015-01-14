@@ -227,7 +227,7 @@ Con `A, B, C \in \mathcal M_{m \times n}(\mathbb K)` y `\alpha, \beta \in \mathb
 		
 		
 		\big(A + (B + C)\big)(i, j) = a_{ij} + (b_{ij} + c_{ij}) =^{\color{blue} 1}
-			(a_{ij} + b_{ij}) + c_{ij} \big((A + B) + C\big)(i, j) \\
+			(a_{ij} + b_{ij}) + c_{ij} = \big((A + B) + C\big)(i, j) \\
 		\color{blue} 1 \mapsto \text{ Por la propiedad asociativa de la suma en } \mathbb K
 		
    
