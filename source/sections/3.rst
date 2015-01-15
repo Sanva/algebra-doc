@@ -308,7 +308,7 @@ Con `v_1, \cdots, v_n \in V`, `0 \neq \alpha \in \mathbb K` y `\beta \in \mathbb
 			S \subset \langle S' \rangle \\
 			S' \subset \langle S \rangle
 		\end{matrix}
-		\right\} \Rightarrow
+		\right\} \Leftarrow
 		v_i + \beta v_j \in \langle S \rangle
 
 
