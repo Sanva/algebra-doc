@@ -13,4 +13,4 @@ Apuntes de Álgebra
    ./sections/1.rst
    ./sections/2.rst
    ./sections/3.rst
-   ./sections/xypic-test.rst
+   ./sections/4.rst

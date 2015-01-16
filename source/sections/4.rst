@@ -1,0 +1,1285 @@
+
+.. default-role:: math
+
+.. raw:: html
+	
+	<script type="text/x-mathjax-config">
+		MathJax.Ajax.config.path["Contrib"] = "https://cdn.mathjax.org/mathjax/contrib";
+		MathJax.Hub.Config({
+			TeX: {extensions: ["[Contrib]/xyjax/xypic.js"]}
+		});
+	</script>
+
+Tema 4
+======
+
+Aplicaciones lineales
+---------------------
+
+.. admonition:: Definición
+	
+	Sean `V` y `V' \; \mathbb K`-espacios vectoriales.
+	
+	Una aplicación `f: V \rightarrow V'` es lineal si
+	
+	#)	`f(v_1 + v_2) = f(v_1) + f(v_2) \quad \forall v_1, v_2 \in V`
+	
+	#)	`f(\alpha v) = \alpha f(v) \quad \forall \alpha \in \mathbb K \quad \forall v \in V`
+	
+	.. admonition:: Ejemplo
+		
+		Los siguientes son ejemplos de aplicaciones lineales:
+		
+		#)	.. math::
+				
+				\begin{array}{lr}
+					f: V \rightarrow V' 	& \\
+					v \leadsto f(v) := 0	& \forall v \in V
+				\end{array}
+		
+		#)	.. math::
+				
+				\begin{array}{lr}
+					1_V = \operatorname{id}_V : V \rightarrow V & \\
+					v \leadsto \operatorname{id}_V(v) := v		& \forall v \in V
+				\end{array}
+		
+		#)	.. math::
+				
+				\begin{array}{l}
+					f : \mathbb R^2 \rightarrow \mathbb R \\
+					(x, y) \leadsto f(x, y) = x + 2y
+				\end{array}
+			
+			.. admonition:: Demostración
+				
+				.. math::
+					
+					\begin{array}{r}
+						\begin{matrix}
+							f \big( (x, y) + (x', y') \big) =
+								f(x + x', y + y') = (x + x') + 2(y + y') =
+								x + 2y + x' + 2y' = f(x, y) + f(x', y') \\
+							f \big( \alpha (x, y) \big) = f(\alpha x, \alpha y) =
+								\alpha x + 2 \alpha y = \alpha (x + 2y) =
+								\alpha f(x, y)
+						\end{matrix} \\
+						\forall \alpha \in \mathbb R \\
+						\forall (x, y) \in \mathbb R^2
+					\end{array}
+		
+		#)	.. math::
+				
+				\begin{array}{l}
+					f : \mathbb R^3 \rightarrow \mathbb R^2 \\
+					(x, y, z) \leadsto f(x, y, z) = (x + y + z, x + 2z)
+				\end{array}
+		
+		Los siguientes son ejemplos de aplicaciones **no** lineales:
+		
+		#)	.. math::
+				
+				\begin{array}{l}
+					f : \mathbb R^2 \rightarrow \mathbb R \\
+					(x, y) \leadsto f(x, y) = x^2 + y
+				\end{array}
+		
+		#)	.. math::
+				
+				\begin{array}{l}
+					f : \mathbb R^2 \rightarrow \mathbb R^3 \\
+					(x, y) \leadsto f(x, y) := (x + y, x - y, 1)
+				\end{array}
+		
+
+Propiedades
+$$$$$$$$$$$
+
+Con `f: V \rightarrow V'` aplicación lineal
+
+#)	.. math::
+		
+		f(0_V) = 0_{V'}
+	
+	.. admonition:: Demostración
+		
+		.. math::
+			
+			\begin{matrix}
+				f(0) = f(0 + 0) \underset{ f \text{ lineal} }{ = }
+					f(0) + f(0) \Rightarrow
+					\underbrace{ f(0) - f(0) }_0 =
+					f(0) + \underbrace{ f(0) - f(0) }_0 =
+					f(0) \Rightarrow f(0) = 0
+			\end{matrix}
+
+#)	.. math::
+		
+		f(-v) = -f(v) \quad \forall v \in V
+	
+	.. admonition:: Demostración
+		
+		.. math::
+			
+			\begin{matrix}
+				f(-v) = f(v) = f(-v + v) = f(0) = 0 \\
+				\Updownarrow \\
+				f(-v) = -f(v)
+			\end{matrix}
+
+#)	.. math::
+		
+		\begin{array}{r}
+			f(\alpha_1 v_1 + \cdots + \alpha_n v_n) =
+				\alpha_1 f(v_1) + \cdots + \alpha_n f(v_n) \\
+			\forall \alpha_1, \cdots, \alpha_n \in \mathbb K \\
+			\forall v_1, \cdots, v_n \in V
+		\end{array}
+	
+	.. admonition:: Demostración
+		
+		.. math::
+			
+			\begin{matrix}
+				f(\alpha_1 v_1 + \alpha_2 v_2) =
+					f(\alpha_1 v_1) + f(\alpha_2 v_2) =
+					\alpha_1 f(v_1) + \alpha_2 f(v_2)
+			\end{matrix}
+
+#)	.. math::
+		
+		\begin{matrix}
+			\lbrace v_1, \cdots, v_n \rbrace \subset V \text{ linealmente dependiente} \\
+			\Updownarrow \\
+			\lbrace f(v_1), \cdots, f(v_n) \rbrace \subset V' \text{ linealmente dependiente}
+		\end{matrix}
+	
+	.. admonition:: Demostración
+		
+		.. math::
+			
+			\begin{matrix}
+				\lbrace v_1, \cdots, v_n \rbrace \subset V \text{ linealmente dependiente} \\
+				\Updownarrow \\
+				\left\{
+					\exists \underset{ \text{(no todos cero)} }{ \alpha_1, \cdots, \alpha_n } \in \mathbb K
+					\middle/
+					\alpha_1 v_1 + \cdots + \alpha_n v_n = 0
+				\right\} \\
+				\Downarrow \\
+				\alpha_1 f(v_1) + \cdots + \alpha_n f(v_n) =
+					f(\alpha_1 v_1 + \cdots + \alpha_n v_n) = f(0) = 0 \\
+				\Downarrow \\
+				\lbrace f(v_1), \cdots, f(v_n) \rbrace \subset V' \text{ linealmente dependiente}
+			\end{matrix}
+
+Aplicaciones lineales y subespacios
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+.. admonition:: Proposición
+	
+	Sea `f: V \rightarrow V'` aplicación lineal.
+	
+	Se verifica
+	
+	#)	Si `U` es subespacio de `V` entonces
+		`f(U) := \left\{ f(u) \middle/ u \in U \right\} \subset V'` es subespacio
+		de `V'`.
+		
+		Además `U = \langle u_1, \cdots, u_n \rangle \Rightarrow f(U) =
+		\langle f(u_1), \cdots, f(u_n) \rangle`. En particular, el subespacio
+		`f(V)` es la **imagen** de la aplicación `f` y se denotará `\operatorname{Im} f`.
+		
+		.. math::
+			
+			\operatorname{Im} f = f(V) \subset V' \text{ es un subespacio}
+		
+		.. admonition:: Demostración
+			
+			.. math::
+				
+				\begin{matrix}
+					\text{(Conjunto no vacío)} \\
+					0 \in U \Rightarrow f(0) \in f(U) \Rightarrow f(U) \neq \emptyset \\
+					\\
+					\text{(Cerrado para la suma)} \\
+					f(u_1) + f(u_2) \underset{ f \text{ lineal} }{ = }
+						f(u_1 + u_2) \in f(U) \quad u_1 + u_2 \in U \\
+					\\
+					\text{(Cerrado para la multiplicación por escalares)} \\
+					\alpha \in \mathbb K, u \in U, f(u) \in f(U),
+						\alpha f(u) \underset{ f \text{ lineal} }{ = }
+							f(\alpha u) \in f(U) \quad \alpha u \in U \\
+					\\
+					\text{(Generadores del subespacio)} \\
+					f(U) := \left\{
+									f(u)
+									\middle/
+									u \in U = \langle u_1, \cdots, u_n \rangle
+							\right\} =
+							\left\{
+									f(u)
+									\middle/
+									\begin{array}{r}
+										u = \alpha_1 u_1 + \cdots + \alpha_n u_n \\
+										\alpha_i \in \mathbb K \quad \forall i = 1, \cdots, n
+									\end{array}
+							\right\} =
+					\langle f(u_1), \cdots, f(u_n) \rangle
+				\end{matrix}
+	
+	#)	Sea `W` un subespacio de `V'`
+		
+		.. math::
+			
+			f^{-1}(W) := \left\{ v \in V \middle/ f(v) \in W \right\} \subset V
+				\text{ es un subespacio de } V
+		
+		En particular, `f^{-1}(0_{V'}) = \left\{ v \in V \middle/ f(v) = 0_{V'} \right\}` se llama
+		**núcleo** de `f \equiv \ker f`.
+		
+		.. admonition:: Ejemplo
+			
+			.. math::
+				
+				\begin{array}{l}
+					\mathbb R^3 \rightarrow \mathbb R^2 \\
+					(x, y, z) \leadsto (x, y) \\
+					\\
+					W = \left\{ (x, 0) \middle/ x \in \mathbb R \right\} \subset \mathbb R^2 \\
+					f^{-1}(W) = \left\{
+						(x, y, z) \in \mathbb R^3
+						\middle/
+						f(x, y, z) = (x, y) \in W
+					\right\} =
+					\left\{
+						(x, y, z)
+						\middle/
+						\begin{array}{l}
+							y = 0 \\
+							x, z \in \mathbb R
+						\end{array}
+					\right\}
+				\end{array}
+
+Composición de aplicaciones lineales
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+.. admonition:: Proposición
+	
+	Si `f: V \rightarrow W` y `g: W \rightarrow F` son aplicaciones lineales,
+	entonces `g \circ f: V \rightarrow F` es también lineal.
+	
+	.. math::
+		
+		\xymatrix{
+			V \ar@/_1pc/[rr]_{g \circ f} \ar[r]^f & W \ar[r]^g & F
+		}
+	
+	.. admonition:: Demostración
+		
+		.. math::
+			
+			\begin{matrix}
+				(g \circ f)(v) := g(f(v)) \quad \forall v \in V \\
+				\\
+				\text{(Cerrado para la suma)} \\
+				(g \circ f)(v_1 + v_2) = g(f(v_1 + v_2)) \underset{ f \text{ lineal} }{ = }
+					g(f(v_1) + f(v_2)) \underset{ g \text{ lineal} }{ = }
+					g(f(v_1)) + g(f(v_2)) =
+					(g \circ f)(v_1) + (g \circ f)(v_2) \quad \forall v_1, v_2 \in V \\
+				\\
+				\text{(Cerrado para la multiplicación por escalares)} \\
+				(g \circ f)(\alpha v) = g(f(\alpha v)) \underset{ f \text{ lineal} }{ = }
+					g(\alpha f(v)) \underset{ g \text{ lineal} }{ = }
+					\alpha g(f(v)) = \alpha (g \circ f)(v) \quad \forall v \in V
+			\end{matrix}
+
+Aplicaciones lineales inyectivas, sobreyectivas y biyectivas
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+Con `f: A \rightarrow B`
+
+#)	.. math::
+		
+		\begin{matrix}
+			f \text{ inyectiva} \\
+			\Updownarrow \\
+			f(a_1) = f(a_2) \Leftrightarrow a_1 = a_2 \quad \forall a_1, a_2 \in A
+		\end{matrix}
+
+#)	.. math::
+		
+		\begin{matrix}
+			f \text{ sobreyectiva} \\
+			\Updownarrow \\
+			\operatorname{Im} f = \left\{ f(a) \middle/ a \in A \right\} = B \\
+			\Updownarrow \\
+			\left. \forall b \in B \quad \exists a \in A \middle/ f(a) = b \right.
+		\end{matrix}
+
+#)	.. math::
+		
+		\begin{matrix}
+			f \text{ biyectiva} \\
+			\Updownarrow \\
+			f \text{ inyectiva } \wedge f \text{ sobreyectiva} \\
+			\Updownarrow \\
+			\left.
+				\exists g: B \rightarrow A
+				\middle/
+				\begin{array}{l}
+					g \circ f = \operatorname{id}_A \\
+					f \circ g = \operatorname{id}_B
+				\end{array}
+			\right.
+		\end{matrix}
+
+.. admonition:: Definición
+	
+	Un **isomorfismo lineal** `f: V \rightarrow W` es una aplicación
+	lineal biyectiva.
+
+.. admonition:: Proposición
+	
+	Con `f: V \rightarrow W` una aplicación biyectiva (isomorfismo)
+	
+	.. math::
+		
+		f \text{ es lineal } \Leftrightarrow f^{-1} \text{ es lineal}
+	
+	.. admonition:: Demostración
+		
+		.. math::
+			
+			\begin{matrix}
+				& f: V \rightarrow W \quad f^{-1}: W \rightarrow V \\
+				\\
+				"\Rightarrow" & \\
+				& \text{(Cerrado para la suma)} \\
+				& f^{-1}(w_1 + w_2) \overset{ \color{red}{¿1?} }{ = }
+					f^{-1}(w_1) + f^{-1}(w_2) \\
+				& f(f^{-1}(w_1 + w_2)) \overset{ \color{red}{¿1?} }{ = }
+					f(f^{-1}(w_1)) + f(f^{-1}(w_2)) \\
+				& \forall w_1, w_2 \in W \\
+				\\
+				& \text{(Demostración de } \color{red}{1} \color{black}{ \text{)} } \\
+				& f(f^{-1}(w_1) + f^{-1}(w_2)) \underset{ f \text{ lineal} }{ = }
+					f(f^{-1}(w_1)) + f(f^{-1}(w_2)) = w_1 + w_2 =
+					f(f^{-1}(w_1 + w_2)) \\
+				\\
+				\\
+				& \text{(Cerrado para la multiplicación por escalares)} \\
+				& f^{-1}(\alpha w) \overset{ \color{red}{¿2?} }{ = }
+					\alpha f^{-1}(w) \\
+				& f(f^{-1}(\alpha w)) \overset{ \color{red}{¿2?} }{ = }
+					f(\alpha f^{-1}(w)) \\
+				&	\begin{array}{r}
+						\forall w \in W \\
+						\forall \alpha \in \mathbb K
+					\end{array} \\
+				\\
+				& \color{red}{ \text{(Falta la demostración de } } \color{red}{2} \color{red}{ \text{)} } \\
+				\\
+				\\
+				\\
+				& \color{red}{ \text{(Falta la demostración de } } "\Leftarrow" \color{red}{ \text{)} } \\
+			\end{matrix}
+
+Aplicaciones lineales, generadores y bases
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+.. admonition:: Proposición
+	
+	Con `V` y `V' \; \mathbb K`-espacios vectoriales, `B_V = \lbrace v_1, \cdots, v_n \rbrace` base
+	de `V` y `w_1, \cdots, w_n \in V'`, existe una única aplicación lineal
+	
+	.. math::
+		
+		\left. f: V \rightarrow V' \: \middle/ \: f(v_i) = w_i \right. \quad \forall i = 1, \cdots, n
+	
+	.. admonition:: Demostración
+		
+		.. math::
+			
+			\begin{matrix}
+			v \in V \text{ existen (y son únicos)} \\
+			\\
+			\text{(Existencia)} \\
+			\left.
+				\alpha_1, \cdots, \alpha_n \in \mathbb K
+				\middle/
+				v = \alpha_1 v_1 + \cdots + \alpha_n v_n
+			\right. \\
+			f: V \rightarrow V' \\
+			f(v) := \displaystyle \sum^n_{i = 1} \alpha_i w_i \\
+			\text{La aplicación es lineal y además } f(v_i) = w_i \\
+			\\
+			\text{(Unicidad)} \\
+			\text{Con }	\left.
+							g: V \rightarrow V' \text{ aplicación lineal }
+							\middle/
+							g(v_i) = w_i
+							\right.
+				\quad \forall i = 1, \cdots, n \\
+			g(v) = g(\alpha_1 v_1 + \cdots + \alpha_n v_n) \underset{ g \text{ lineal} }{ = }
+				g(\alpha_1 v_1) + \cdots + g(\alpha_n v_n) \underset{ g \text{ lineal} }{ = }
+				\alpha_1 g(v_1) + \cdots + \alpha_n g(v_n) =
+				\alpha_1 w_1 + \cdots + \alpha_n w_n = f(v) \\
+			\forall v = \alpha_1 v_1, \cdots, \alpha_n v_n \in V
+			\end{matrix}
+		
+		.. admonition:: Ejemplo
+			
+			.. math::
+				
+				\xymatrix @M=0pt @H=1ex @R=0.5ex {
+					\mathbb R^3 \quad \mathbb R^2 \\
+					\mathcal C = \lbrace (1, 0, 0), (0, 1, 0), (0, 0, 1) \rbrace \\
+					w_1 = (1, 1) \\
+					w_2 = (2, 3) \\
+					w_3 = (0, 7) \\
+					\\
+					f: \mathbb R^3 \rightarrow \mathbb R^2 \\
+					(1, 0, 0) \leadsto (1, 1) \\
+					(0, 1, 0) \leadsto (2, 3) \\
+					(0, 0, 1) \leadsto (0, 7) \\
+					\\
+					(x, y, z) = x(1, 0, 0) + y(0, 1, 0) + z(0, 0, 1) \\
+					f(x, y, z) = x(1, 1) + y(2, 3) + z(0, 7) =
+						(x + 2y, x + 3y + 7z)
+				}
+
+.. admonition:: Proposición
+	
+	Sea `f: V \rightarrow V'` aplicación lineal.
+	
+	#)	`f` inyectiva `\Leftrightarrow \ker f = \lbrace 0 \rbrace \Leftrightarrow` La imagen
+		por `f` de cualquier subconjunto de vectores de `V` que sea linealmente independiente
+		es un subconjunto de `V'` de vectores linealmente independientes.
+	
+	#)	`f` sobreyectiva `\Leftrightarrow \operatorname{Im} f = V' \Leftrightarrow` La imagen
+		por `f` de cualquier conjunto de generadores de `V` es un conjunto de generadores
+		de `V'`.
+	
+	#)	`f` biyectiva `\Leftrightarrow` La imagen por `f` de una base de `V` es una base
+		de `V'`.
+	
+	.. admonition:: Demostración
+		
+		#)	.. math::
+				
+				\begin{matrix}
+					\text{(I) } f \text{ inyectiva } \overset{ \color{red}{¿?} }{ \Rightarrow }
+						\ker f = \lbrace 0 \rbrace \\
+					\\
+					\ker f := f^{-1}(\lbrace 0 \rbrace) =
+						\left\{ v \in V \middle/ f(v) = 0 \right\} = \lbrace 0 \rbrace \\
+						\text{ya que} \\
+						\xymatrix @M=0.5ex @H=1ex @R=0.5ex @C=0pt {
+							f(v) = 0 & = & f(0) & = & v = 0 \qquad \\
+							f \text{ lineal} \ar@(r, d)[ur] & & & & f \text{ inyectiva} \ar@(l, d)[ul]
+						} \\
+					\\
+					\\
+					\text{(II) } \ker f = \lbrace 0 \rbrace \overset{ \color{red}{¿?} }{ \Rightarrow }
+						f \text{ inyectiva} \\
+					\\
+					v, w \in V \\
+					\xymatrix @M=0.5ex @H=1ex @R=0.5ex @C=0pt {
+						f(v) = f(w) \Leftrightarrow 0 = f(v) - f(w) & = &
+							f(v - w) \Leftrightarrow v - w \in \ker f & = &
+							\lbrace 0 \rbrace \Leftrightarrow v - w = 0 \Leftrightarrow v = w \\
+						f \text{ lineal} \ar@(r, d)[ur] & & & & \text{hipótesis} \ar@(l, d)[ul]
+					} \\
+					\\
+					\\
+					\text{(III)} \ker f = \lbrace 0 \rbrace \overset{ \color{red}{¿?} }{ \Rightarrow }
+						\text{ La imagen por } f \text{ de cualquier...} \\
+					\\
+					\lbrace v_1, \cdots, v_m \rbrace \subset V \text{ linealmente independiente }
+						\overset{ \color{red}{¿?} }{ \Rightarrow }
+						\lbrace f(v_1), \cdots, f(v_m) \rbrace \subset V' \text{ linealmente independiente } \\
+					\\
+					\alpha_1, \cdots, \alpha_m \in \mathbb K \\
+					\underbrace{
+						\xymatrix @M=0.5ex @H=1ex @R=0.5ex @C=0pt {
+							& & f \text{ lineal} \ar@(l, u)"2,2" \\
+							0 = \alpha_1 f(v_1) + \cdots + \alpha_m f(v_m) & = &
+								f(\alpha_1 v_1 + \cdots + \alpha_m v_m)
+						}
+					} \\
+					\alpha_1 v_1 + \cdots + \alpha_m v_m \in \ker f = \lbrace 0 \rbrace \\
+					\Downarrow \\
+					\left\{
+					\begin{array}{l}
+						\alpha_1 v_1 + \cdots + \alpha_m v_m = 0 \\
+						\lbrace v_1, \cdots, v_m \rbrace \text{ es linealmente independiente}
+					\end{array}
+					\right. \\
+					\Downarrow \\
+					\begin{array}{l}
+						\alpha_i = 0 \\
+						\forall i = 1, \cdots, m
+					\end{array} \\
+					\\
+					\\
+					\text{(IV)} \text{ La imagen por } f \text{ de cualquier...}
+						\overset{ \color{red}{¿?} }{ \Rightarrow }
+						\ker f = \lbrace 0 \rbrace \\
+					\\
+					v \in \ker f \overset{ \color{red}{¿?} }{ \Rightarrow } v = 0
+						\Leftrightarrow \ker f = \lbrace 0 \rbrace \\
+					\underbrace{
+						\xymatrix @M=0.5ex @H=1ex @R=0.5ex @C=0pt {
+							& & \text{hipótesis} \ar@(l, u)"2,2" \\
+							v \neq 0 \Leftrightarrow \lbrace u \rbrace
+								\text{ es linealmente independiente} & \Rightarrow &
+									\lbrace f(v) \rbrace \text{ es linealmente independiente}
+						}
+					} \\
+					\Downarrow \\
+					f(v) \neq 0
+				\end{matrix}
+		
+		#)	.. math::
+				
+				\begin{matrix}
+					\text{(I) } f \text{ sobreyectiva } \overset{ \color{red}{¿?} }{ \Leftrightarrow }
+						\operatorname{Im} f = V' \\
+					\\
+					f \text{ sobreyectiva } \\
+					\Updownarrow \\
+					\left. \forall v' \in V' \quad \exists v \in V \middle/ v' = f(v) \right. \\
+					\Updownarrow \\
+					\operatorname{Im} f = \left\{ f(v) \middle/ v \in V \right\} = V'
+					\\
+					\\
+					\text{(II) } f \text{ sobreyectiva } \overset{ \color{red}{¿?} }{ \Leftrightarrow }
+						\text{La imagen por } f \text{ de cualquier conjunto de generadores...} \\
+					\\
+					V = \langle v_1, \cdots, v_n \rangle \Rightarrow \operatorname{Im} f = f(V) =
+						\langle f(v_1), \cdots, f(v_n) \rangle \text{ —siempre que } f \text{ sea lineal.} \\
+					\\
+					"\Rightarrow" \\
+					V = \langle v_1, \cdots, v_n \rangle \\
+					\Downarrow \\
+					\xymatrix @M=0.5ex @H=1ex @R=0.5ex @C=0pt {
+						V' & = & \operatorname{Im} f = \langle f(v_1), \cdots, f(v_n) \rangle \\
+						& & f \text{ es inyectiva} \ar@(l, d)"1,2"
+					} \\
+					\\
+					"\Leftarrow" \\
+					\text{Con } V = \langle v_1, \cdots, v_n \rangle \\
+						\xymatrix @M=0.5ex @H=1ex @R=0.5ex @C=0pt {
+							& & \text{hipótesis} \ar@(l,u)"2,2" \\
+							\operatorname{Im} f = f(V) =
+							\langle f(v_1), \cdots, f(v_n) \rangle & = & V'
+							\Rightarrow f \text{ sobreyectiva}
+						}
+				\end{matrix}
+		
+		#)	.. math::
+				
+				\begin{matrix}
+					f \text{ biyectiva } \Leftrightarrow f \text{ inyectiva }
+						\wedge f \text{ sobreyectiva} \\
+					\\
+					"\Rightarrow" \\
+					B = \lbrace v_1, \cdots, v_n \rbrace \text{ base de } V \\
+					\Downarrow \\
+					\underbrace{
+						\left.
+						\begin{array}{r}
+							\text{(por ser inyectiva)} \quad \lbrace f(v_1), \cdots, f(v_n) \rbrace
+								\text{ es linealmente independiente} \\
+							\text{(por ser biyectiva)} \quad \lbrace f(v_1), \cdots, f(v_n) \rbrace
+								\text{ es conjunto de generadores de } V'
+						\end{array}
+						\right\}
+					} \\
+					\Downarrow \\
+					\lbrace f(v_1), \cdots, f(v_n) \rbrace \text{ es base de } V' \\
+					\\
+					"\Leftarrow" \\
+					B = \lbrace v_1, \cdots, v_n \rbrace \text{ base de } V \\
+					\text{Con } w_i \equiv f(v_i) \quad \lbrace w_i, \cdots, w_n \rbrace
+						\text{ es base de } V' \\
+					\\
+					f \text{ biyectiva } \Leftrightarrow f \text{ tiene inversa} \\
+					\xymatrix{
+						V \ar^f[r] & V'
+					} \\
+					\left.
+						\exists^\bullet g: V' \rightarrow V
+						\middle/
+						g(w_i) = v_i \quad \forall i = 1, \cdots, n
+					\right. \\
+					\lbrace w_1, \cdots, w_n \rbrace \text{ es base de } V' \\
+					v_1 \cdots v_n \text{ son elementos de } V \\
+					\text{Se verifica } g \circ f = \operatorname{id}_V \text{ y }
+						f \circ g = \operatorname{id}_{V'} \text{ —es decir, } g
+						\text{ es la inversa de } f
+				\end{matrix}
+	
+	.. admonition:: Ejemplo
+		
+		.. math::
+			
+			\begin{matrix}
+				\xymatrix{
+					\mathbb R^2 \ar^f[r] & \mathbb R^2
+				} \\
+				f(1, 0) = (1, 1) \\
+				f(0, 1) = (2, 0) \\
+				\\
+				\text{(Comprobar que } f \text{ es biyectiva y calcular su inversa)} \\
+				\mathcal C = \lbrace (1, 0), (0, 1) \rbrace \text{ base canónica de } \mathbb R^2 \\
+				(x, y) = x(1, 0) + y(0, 1) \\
+				f(x, y) = xf(1, 0) + yf(0, 1) = x(1, 1) + y(2, 0) = (x + 2y, x) \\
+				\lbrace (1, 1), (2, 0) \rbrace \subset \mathbb R^2 \text{ es base de } \mathbb R^2 \\
+				\ker f = \left\{ (x, y) \in \mathbb R^2 \middle/ f(x, y) = (x + 2y, x) = (0, 0) \right\} =
+					\left\{
+						(x, y) \in \mathbb R^2
+						\middle/
+						\begin{array}{r}
+							x + 2y = 0 \\
+							x = 0
+						\end{array}
+					\right\} =
+					\lbrace (0, 0) \rbrace \Rightarrow f \text{ inyectiva} \\
+					\\
+					\operatorname{Im} f = \langle f(1, 0), f(0, 1) \rangle =
+						\langle (1, 1), (2, 0) \rangle \subset \mathbb R^2 \\
+					\left.
+					\begin{array}{r}
+						\dim \operatorname{Im} f = 2 \\
+						\operatorname{Im} f \subset \mathbb R^2
+					\end{array}
+					\right\} \Rightarrow \operatorname{Im} f = \mathbb R^2 \Rightarrow
+						f \text{ sobreyectiva} \\
+					\\
+					\text{(Inversa de } f \text{)} \\
+					\xymatrix{
+						\mathbb R^2 \ar^g[r] & \mathbb R^2
+					} \\
+					g(1, 1) = (1, 0) \\
+					g(2, 0) = (0, 1) \\
+					g(x, y) = \alpha(1, 1) + \beta(2, 0) = (\alpha + 2 \beta, \alpha) \\
+					\Updownarrow \\
+					\xymatrix @M=0.5ex @H=1ex @R=0.5ex @C=3em {
+						*{
+							\begin{matrix}
+								\left(
+								\begin{array}{cc|c}
+									1 & 2 & x \\
+									1 & 0 & y
+								\end{array}
+								\right) \\
+								\alpha = y \\
+								\beta = \frac{ x - y }{ 2 }
+							\end{matrix}
+						} \ar@(r, l)"2,2" &
+						*{
+							\left.
+							\begin{array}{r}
+								\alpha + 2 \beta \\
+								\alpha = y
+							\end{array}
+							\right\}
+						} \\
+						& \Downarrow & \hspace{6em}
+					} \\
+					(x, y) = y(1, 1) + \frac{ x - y }{ 2 }(2, 0) \\
+					g(x, y) = yg(1, 1) + \frac{ x - y }{ 2 }g(2, 0) =
+						y(1, 0) + \frac{ x - y }{ 2 }(0, 1) =
+						(y, \frac{ x - y }{ 2 })
+			\end{matrix}
+
+.. admonition:: Proposición
+	
+	Con `V, V' \; \mathbb K`-espacios vectoriales de dimensión finita
+	
+	#)	`V` y `V'` son isomorfos `\Leftrightarrow \dim V = \dim V'`
+		
+		.. admonition:: Demostración
+				
+				.. math::
+					
+					\begin{matrix}
+						"\Rightarrow" \\
+						\underbrace{
+							\left.
+							\begin{array}{r}
+								V \simeq V' \Leftrightarrow \exists
+									f: V \rightarrow V' \text{ isomorfismo} \\
+								\text{Con } B = \lbrace v_1, \cdots, v_n \rbrace
+									\text{ base de } V
+							\end{array}
+							\right\}
+						} \\
+						\Downarrow \\
+						\lbrace f(v_1), \cdots, f(v_n) \rbrace \text{ base de } V' \\
+						\Downarrow \\
+						\dim V' = n = \dim V \\
+						\\
+						"\Leftarrow" \\
+						\underbrace{
+							\left.
+							\begin{array}{r}
+								\text{Con } B_V = \lbrace v_1, \cdots, v_n \rbrace
+									\text{ base de } V \\
+								\text{y } B_{V'} = \lbrace w_1, \cdots, w_n \rbrace
+									\text{ base de } V'
+							\end{array}
+							\right\}
+						} \\
+						\Downarrow \\
+						\underbrace{
+							\left.
+							\begin{array}{l}
+								\left.
+									\begin{array}{l}
+										\left.
+											\exists^\bullet f: V \rightarrow V' \text{ aplicación lineal }
+											\middle/
+											f(v_i) = w_i \quad \forall i = 1, \cdots, n
+										\right. \\
+										\left.
+											\exists^\bullet g: V' \rightarrow V \text{ aplicación lineal }
+											\middle/
+											g(w_i) = v_i \quad \forall i = 1, \cdots, n
+										\right.
+									\end{array}
+									\middle/
+									\begin{array}{l}
+										g \circ f = \operatorname{id}_V \\
+										f \circ g = \operatorname{id}_{V'}
+									\end{array}
+								\right.
+							\end{array}
+							\right\}
+						} \\
+						\Downarrow \\
+						f \text{ es isomorfismo}
+					\end{matrix}
+	
+	
+	#)	`\dim V = n \Rightarrow V` es isomorfo a `\mathbb K^n`
+
+Teorema de la dimensión
+%%%%%%%%%%%%%%%%%%%%%%%
+
+Sea `f: V \rightarrow V'` una aplicación lineal.
+
+Se verifica:
+
+.. math::
+	
+	\dim \ker f + \dim \operatorname{Im} f = \dim V
+
+.. admonition:: Demostración
+	
+	.. math::
+		
+		\begin{matrix}
+			\ker f \text{ subespacio de } V \Rightarrow r = \dim \ker f \leq \dim V = n \\
+			\\
+			\lbrace v_1, \cdots, v_r \rbrace \text{ base de } \ker f \\
+			\Downarrow \\
+			\lbrace v_1, \cdots, v_r \rbrace \subset V \text{ linealmente independiente} \\
+			\Downarrow \\
+			\left.
+				\exists v_{r + 1}, \cdots, v_n \in V
+				\middle/
+				\lbrace v_1, \cdots, v_r, v_{r + 1}, \cdots, v_n \rbrace \text{ base de } V
+			\right. \\
+			\Downarrow \\
+			\xymatrix{ *+<1ex,1ex>[F-,]{ 1 } } \quad
+				\langle f(v_{r + 1}), \cdots, f(v_n) \rangle = \operatorname{Im} f =
+				\langle
+					\underbrace{ f(v_1) }_0, \cdots, \underbrace{ f(v_r) }_0,
+						f(v_{r + 1}), \cdots, f(v_n)
+				\rangle \\
+			\\
+			\xymatrix{ *+<1ex,1ex>[F-,]{ 2 } } \quad
+				\lbrace f(v_{r + 1}), \cdots, f(v_n) \rbrace
+				\text{ es linealmente independiente (pendiente de demostrar)} \\
+			\\
+			\left.
+			\begin{matrix}
+				\xymatrix{ *+<1ex,1ex>[F-,]{ 1 } } \\
+				\xymatrix{ *+<1ex,1ex>[F-,]{ 2 } }
+			\end{matrix}
+			\right\}
+			\Rightarrow
+			\left\{
+			\begin{array}{l}
+				\lbrace f(v_{r + 1}), \cdots, f(v_n) \rbrace \text{ base de }
+					\operatorname{Im} f \\
+				\dim \operatorname{Im} f = n - r = \dim V - \dim \ker f
+			\end{array}
+			\right. \\
+			\\
+			\text{(} \lbrace f(v_{r + 1}), \cdots, f(v_n) \rbrace
+				\text{ es linealmente independiente)} \\
+			\alpha_{r + 1}, \cdots, \alpha_n \in \mathbb K \\
+			0 = \alpha_{r + 1} f(v_{r + 1}) + \cdots + \alpha_n f(v_n) =
+				f(\alpha_{r + 1} v_{r + 1} + \cdots + \alpha_n v_n) \\
+			\Downarrow \\
+			\alpha_{r + 1} v_{r + 1} + \cdots + \alpha_n v_n \in \ker f \\
+			\left.
+				\exists \alpha_1, \cdots, \alpha_r \in \mathbb K
+				\middle/
+				\alpha_{r + 1} v_{r + 1} + \cdots + \alpha_n v_n =
+					\alpha_1 v_1 + \cdots + \alpha_r v_r
+			\right. \\
+			\Downarrow \\
+			-\alpha_1 v_1 - \cdots -\alpha_r v_r + \alpha_{r + 1} v_{r + 1} +
+				\cdots + \alpha_n v_n = 0 \\
+			\xymatrix @M=0.5ex @H=1ex @R=0.5ex @C=3em {
+				*{
+					\lbrace v_1, \cdots, v_n \rbrace \text{ es linealmente independiente}
+				} \ar@/_/[r] &
+				\Downarrow &
+				\hspace{16.5em}
+			} \\
+			\alpha_i = 0 \quad \forall i = 1, \cdots, n
+		\end{matrix}
+	
+	.. admonition:: Ejemplo
+		
+		.. math::
+			
+			\begin{matrix}
+				f: \mathbb R^3 \rightarrow \mathbb R^2 \\
+				f(x, y, z) \leadsto (x - z, y + z) \\
+				\dim \mathbb R^3 = 3 \quad \dim \mathbb R^2 = 2 \\
+				\\
+				\underbrace{
+					\ker f =
+						\left\{
+							(x, y, z) \in \mathbb R^3
+							\middle/
+							(x - z, y + z) = (0, 0)
+						\right\} =
+						\left\{
+							(x, y, z) \in \mathbb R^3
+							\middle/
+							\begin{array}{r}
+								x - z = 0 \\
+								y + z = 0
+							\end{array}
+						\right\} =
+						\left\{
+							(z, -z, z)
+							\middle/
+							z \in \mathbb R
+						\right\} =
+						\langle (1, -1, 1) \rangle
+				} \\
+				\Downarrow \\
+				\dim \ker f = 1 \\
+				B_{\ker f} = \lbrace \underbrace{ (1, -1, 1) }_{ v_1 } \rbrace \\
+				v_2 = (0, 1, 0) \\
+				v_3 = (0, 0, 1) \\
+				\lbrace v_1, v_2, v_3 \rbrace \text{ es base de } \mathbb R^3 \\
+				\\
+				\xymatrix @M=0.5ex @H=1ex @R=0.5ex @C=0em {
+					\operatorname{Im} f = \langle f(v_1), f(v_2), f(v_3) \rangle & = &
+						\langle (0, 1), (-1, 1) \rangle \Rightarrow \dim \operatorname{Im} f = 2 \\
+					f(v_1) = 0 \ar@(r, d)"1,2"
+				}
+			\end{matrix}
+
+.. admonition:: Corolario
+	
+	Con `f: V \rightarrow V` aplicación lineal y `\dim V = n` (endomorfismo de `V`)
+	
+	Son equivalentes:
+	
+	- `f` biyectiva (isomorfismo).
+	
+	- `f` inyectiva.
+	
+	- `f` sobreyectiva.
+	
+	.. admonition:: Demostración
+		
+		.. math::
+			
+			\begin{matrix}
+				\text{Se verifica que } \dim V = \dim \ker f + \dim \operatorname{Im} f \\
+				\\
+				f \text{ inyectiva} \\
+				\Updownarrow \\
+				\ker f = \lbrace 0 \rbrace \\
+				\Updownarrow \\
+				\dim \ker f = 0 \\
+				\Updownarrow \\
+				\dim V = \dim \operatorname{Im} f \\
+				\xymatrix @M=0.5ex @H=1ex @R=0.5ex @C=3em {
+					*{
+						\operatorname{Im} f \subset V
+					} \ar@/_/[r] &
+					\Updownarrow &
+					\hspace{4em}
+				} \\
+				\operatorname{Im} f = V \\
+				\Updownarrow \\
+				f \text{ sobreyectiva}
+			\end{matrix}
+	
+	.. admonition:: Ejemplo
+		
+		¿Existe `f: \mathbb R^3 \rightarrow \mathbb R^4` aplicación lineal y sobreyectiva?
+		
+		.. math::
+			
+			\begin{matrix}
+				\xymatrix{ *+<1ex,1ex>[F-:<3ex>]{ \text{No} } } \\
+				\\
+				3 = \dim \ker f + \dim \operatorname{Im} f \Rightarrow
+					\dim \operatorname{Im} f \leq 3 \Rightarrow
+					\operatorname{Im} f \subsetneq \mathbb R^4
+			\end{matrix}
+
+Matriz asociada a una aplicación lineal
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+Con `\dim V = n`, `\dim W = m`, `B_V = \lbrace v_1, \cdots, v_n \rbrace` base de `V` y
+`B_W = \lbrace w_1, \cdots, w_n \rbrace` base de `W`.
+
+.. admonition:: Definición
+	
+	Sea `f: V \rightarrow W` una aplicación lineal tal que
+	
+	.. math::
+		
+		\begin{matrix}
+			f(v_j) = \displaystyle \sum^{m}_{i = 1} a_{ij} w_i =
+				a_{1j} w_1 + \cdots + a_{mj} w_m \quad \forall j = 1, \cdots, n
+		\end{matrix}
+	
+	A la matriz `(a_{ij})` le llamaremos **matriz asociada a** `f` **respecto
+	de las bases** `B_V` y `B_W` y se denota por
+	
+	.. math::
+		
+		\begin{matrix}
+			(f)_{ B_V, B_W } = (a_{ij}) \in \mathcal M_{m \times n}(\mathbb K)
+		\end{matrix}
+	
+	.. admonition:: Ejemplo
+		
+		.. math::
+			
+			\begin{matrix}
+				\operatorname{id}: \mathbb R^3 \rightarrow \mathbb R^3 \\
+				(x, y, z) \leadsto \operatorname{id}(x, y, z) = (x, y, z) \\
+				\\
+				B = \lbrace v_1, v_2, v_3 \rbrace \text{ base de } \mathbb R^3 \\
+				(\operatorname{id})_{B, B} =
+					\begin{pmatrix}
+						1 & 0 & 0 \\
+						0 & 1 & 0 \\
+						0 & 0 & 1
+					\end{pmatrix} \\
+				\\
+				B' = \lbrace (1, 1, 1), (0, 1, 1), (0, 0, 1) \rbrace \\
+				\mathcal C = \lbrace (1, 0, 0), (0, 1, 0), (0, 0, 1) \rbrace \\
+				(\operatorname{id})_{B', \mathcal C} =
+					\begin{pmatrix}
+						1 & 0 & 0 \\
+						1 & 1 & 0 \\
+						1 & 1 & 1
+					\end{pmatrix}
+			\end{matrix}
+	
+	.. admonition:: Ejemplo
+		
+		.. math::
+			
+			\begin{matrix}
+				\mathbb R^2 \rightarrow \mathbb R^3 \\
+				(x, y) \leadsto f(x, y) = (x + y, x - y, 2y) \\
+				\\
+				B_{\mathbb R^2} = \lbrace (1, 1), (0, 2) \rbrace \\
+				B_{\mathbb R^3} = \lbrace (1, 0, 0), (0, 1, 0), (0, 0, 1) \rbrace =
+					\mathcal C_{\mathbb R^3} \\
+				\\
+				f(1, 1) = (2, 0, 2) = 2(1, 0, 0) + 0(0, 1, 0) + 2(0, 0, 1) \\
+				f(0, 2) = (2, -2, 4) = 2(1, 0, 0) - 2(0, 1, 0) + 4(0, 0, 1) \\
+				\\
+				(f)_{ B_{\mathbb R^2}, \mathcal C_{\mathbb R^3} } =
+					\begin{pmatrix}
+						2 & 2 \\
+						0 & -2 \\
+						2 & 4
+					\end{pmatrix}
+			\end{matrix}
+	
+	.. note::
+		
+		.. math::
+			
+			(f)_B := (f)_{B, B}
+
+.. admonition:: Proposición
+	
+	Si `v \in V` y `v = \displaystyle \sum_{i = 1}^n \alpha_i v_i` y denoto
+	`(v)_{B_V} \equiv \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix}`
+	entonces se verifica
+	
+	.. math::
+		
+		(f(v))_{B_W} = (f)_{B_V, B_W} \cdot (v)_{B_V}
+	
+	.. admonition:: Demostración
+		
+		.. math::
+			
+			\begin{matrix}
+				\xymatrix @M=0.5ex @H=1ex @R=0.5ex @C=0em {
+					f(v) = f \left( \displaystyle \sum_{i = 1}^n \alpha_i v_i \right) & = &
+						\displaystyle \sum_{i = 1}^n f(\alpha_i v_i) & = &
+						\displaystyle \sum_{i = 1}^n \alpha_i f(v_i) =
+						\displaystyle \sum_{i = 1}^n \alpha_i
+						f \left( \displaystyle \sum_{k = 1}^m a_{ki} w_k \right) = \cdots \\
+					\text{aplicación lineal} \ar@(l,d)"1,2" \ar@(r,d)"1,4"
+					& & & & \cdots = \displaystyle \sum_{i = 1}^n \displaystyle \sum_{k = 1}^m
+						\alpha_i a_{ki} w_k =
+						\displaystyle \sum_{k = 1}^m \left( \displaystyle \sum_{i = 1}^n \alpha_i a_{ki} \right) w_k \\
+				}
+			\end{matrix}
+	
+	.. admonition:: Ejemplo
+		
+		Sea `f: \mathbb R^3 \rightarrow \mathbb R^2` la aplicación lineal cuya
+		matriz asociada en `B_{\mathbb R^3} = \lbrace (1, 1, 1), (0, 1, 1), (0, 0, 1) \rbrace` y
+		`B_{\mathbb R^2} = \mathcal C_{\mathbb R^2}` es
+		
+		.. math::
+			
+			\begin{pmatrix}
+				 1 & 1 & 0 \\
+				-1 & 2 & 5
+			\end{pmatrix}
+		
+		Calcular `f(1, 2, 3)`.
+		
+		.. math::
+			
+			\begin{matrix}
+				v = (1, 2, 3) = \alpha (1, 1, 1) + \beta (0, 1, 1) + \gamma (0, 0, 1) \in \mathbb R^3 \\
+				\\
+				(v)_{B_{\mathbb R^3}} =
+					\begin{pmatrix}
+						\alpha \\
+						\beta \\
+						\gamma
+					\end{pmatrix} \qquad
+					(f(v))_{\mathcal C} =
+					\begin{pmatrix}
+						 1 & 1 & 0 \\
+						-1 & 2 & 5
+					\end{pmatrix}
+					\begin{pmatrix}
+						\alpha \\
+						\beta \\
+						\gamma
+					\end{pmatrix}
+			\end{matrix}
+
+.. admonition:: Observación
+	
+	#)	Con `A = (a_{ij}) \in \mathcal M_{m \times n}(\mathbb K)`,
+		`V \; \mathbb K`-espacio vectorial, `\dim V = n`,
+		`B_V = \lbrace v_1, \cdots, v_n \rbrace`,
+		`W \; \mathbb K`-espacio vectorial, `\dim W = m` y
+		`B_W = \lbrace w_1, \cdots, v_n \rbrace`
+		existe una única aplicación lineal `f: V \rightarrow W` cuya
+		matriz asociada respecto de `B_V` y `B_W` es la matriz
+		`A = (f)_{ B_V, B_W }`
+		
+		.. admonition:: Demostración
+			
+			.. math::
+				
+				\begin{matrix}
+					f: V \rightarrow W \\
+					f(v_j) := \displaystyle \sum_{k = 1}^m a_{kj} w_k \quad \forall j = 1, \cdots, n \\
+					\text{y se verifica} \\
+					(f)_{ B_V, B_W } = A
+				\end{matrix}
+	
+	#)	.. math::
+			
+			\begin{matrix}
+				\operatorname{id}_V: V \rightarrow V \\
+				v \leadsto \operatorname{id}_V(v) = v \\
+				\\
+				(\operatorname{id}_V)_{B_V} =
+					\begin{pmatrix}
+						1 & 0 & 0 \\
+						0 & 1 & 0 \\
+						0 & 0 & 1
+					\end{pmatrix} = I_n
+			\end{matrix}
+		
+		Si `B_V` y `B'_V = \lbrace v'_1, \cdots, v'_n \rbrace` son bases de `V` a la matriz
+		`(\operatorname{id}_V)_{B_V, B'_V}` se le llama **matriz de cambio de base** de `B_V` a
+		`B'_V`
+		
+		.. admonition:: Ejemplo
+			
+			.. math::
+				
+				\begin{matrix}
+					\xymatrix{
+						\mathbb R^2 \ar^{ \operatorname{id} }[r] & \mathbb R^2
+					} \qquad
+					B = \lbrace (1, 1), (0, -1) \rbrace \\
+					\\
+					(\operatorname{id}_V)_{B, \mathcal C_{\mathbb R^2}} =
+						\begin{pmatrix}
+							1 & 0 \\
+							1 & -1
+						\end{pmatrix}
+				\end{matrix}
+
+.. admonition:: Proposición
+	
+	Sean `f: V \rightarrow W` aplicación lineal, `B_V = \lbrace v_1, \cdots, v_n \rbrace` base de `V`,
+	`B_W = \lbrace w_1, \cdots, w_m \rbrace` base de `W`, `g: W \rightarrow V'` aplicación lineal y
+	`B_{V'} = \lbrace v'_1, \cdots, v'_s \rbrace` base de `V'`
+	
+	Si `A = (f)_{B_V, B_W} \in \mathcal M_{m \times n}(\mathbb K)` y
+	`B = (g)_{ B_W, B_{V'} } \in \mathcal M_{s \times m}(\mathbb K)` entonces
+	`(g \circ f)_{ B_V, B_{V'} } = BA`.
+	
+	En particular, si `f` es un isomorfismo (`n = m`)
+	
+	.. math::
+		
+		\begin{matrix}
+			\xymatrix{
+				V \ar^f[r] & W
+			} \\
+			\underbrace{
+				A = (f)_{B_V, B_W} \in \mathcal M_n(\mathbb K)
+			} \\
+			\Downarrow \\
+			A \text{ es no singular}
+		\end{matrix}
+
+.. admonition:: Corolario
+	
+	Con `f: V \rightarrow W` aplicación lineal, `B = \lbrace v_1, \cdots, v_n \rbrace`
+	base de `V` y `B' = \lbrace w_1, \cdots, w_n \rbrace` base de `W` se verifica
+	
+	.. math::
+		
+		\begin{matrix}
+			f \text{ isomorfismo} \\
+			\Updownarrow \\
+			(f)_{B, B'} = A \text{ es no singular}
+		\end{matrix}
+	
+	.. admonition:: Demostración
+		
+		.. math::
+			
+			\begin{matrix}
+				"\Downarrow" \\
+				\xymatrix @R=1ex {
+					V \ar^f[r] & W \ar^{ f^{-1} }[r] & V \\
+					B & B' & B
+				} \\
+				\\
+				\left.
+					\exists f^{-1}: W \rightarrow V \text{ inversa de } f
+					\middle/
+					\left.
+					\begin{array}{l}
+						f^{-1} \circ f = \operatorname{id}_V: V \rightarrow V \\
+						f \circ f^{-1} = \operatorname{id}_W: W \rightarrow W
+					\end{array}
+					\right.
+				\right. \\
+				\\
+				\underbrace{
+					I_n = (f^{-1} \circ f)_{B, B} = (f^{-1})_{B', B} \cdot (f)_{B, B'}
+				} \\
+				\Downarrow \\
+				A \text{ es no singular} \\
+				\\
+				\\
+				"\Uparrow" \\
+				A \text{ no singular } \Leftrightarrow \exists A^{-1} \text{ inversa de } A \\
+				\\
+				g: W \rightarrow V \\
+				g(w_j) := \displaystyle \sum_{ i = 1 }^n A^{-1}(i, j) v_i \text{ aplicación lineal} \\
+				\\
+				(g)_{B', B} = A^{-1} \text{ y } g \text{ es inversa de } f
+			\end{matrix}
+
+.. admonition:: Definición
+	
+	Con `V` espacio vectorial, `B = \lbrace v_1, \cdots, v_n \rbrace` y
+	`B' = \lbrace v'_1, \cdots, v'_n \rbrace` bases de `V`
+	
+	Se llama **matriz de cambio de base** de la base `B` a la base `B'`
+	a la matriz asociada a `\operatorname{id}_V` respecto de las bases
+	`B` y `B'`
+	
+	`(\operatorname{id}_V)_{B, B'}` es una matriz no singular ya que la aplicación
+	identidad es biyectiva.
+
+.. admonition:: Proposición
+	
+	Toda matriz de orden `n` y no singular `A` es una matriz de cambio de base.
+	
+	.. admonition:: Demostración
+		
+		Con `V \; \mathbb K`-espacio vectorial, `\dim V = n` y
+		`B' = \lbrace w_1, \cdots, w_n \rbrace` base de `V` definimos
+		
+		.. math::
+			
+			\begin{matrix}
+				v_j := \displaystyle \sum_{ i = 1 }^n a_{ij} w_i
+					\quad \forall j = 1, \cdots, n
+			\end{matrix}
+		
+		El conjunto `\lbrace v_1, \cdots, v_n \rbrace = B` es base de `V` ya
+		que `A` es no singular
+		
+		.. math::
+			
+			\begin{matrix}
+				(\operatorname{id})_{B, B'} = A
+			\end{matrix}
+
+Isomorfismo de asignación de coordenadas
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+.. admonition:: Definición
+	
+	Con `\dim V = n` y `B = \lbrace v_1, \cdots, v_n \rbrace` base de `V`
+	
+	Existe un isomorfismo `f_i: V \rightarrow \mathbb K^n` definido
+	por `f(v_i) = e_i \quad \forall i = 1, \cdots, n` al que llamamos
+	**isomorfismo de asignación de coordenadas**.
+	
+	`f` es lineal y es isomorfismo ya que la imagen de una base del
+	dominio es una base del rango.
+	
+	.. math::
+		
+		\begin{matrix}
+			v \in V \quad v = \alpha_1 v_1 + \cdots + \alpha_n v_n \\
+			f(v) = \alpha_1 f(v_1) + \cdots + \alpha_n f(v_n) =
+				\alpha_1 (1, 0, \cdots, 0) + \cdots + \alpha_n (0, \cdots, 0, 1) =
+				(\alpha_1, \alpha_2, \cdots, \alpha_n)
+		\end{matrix}
